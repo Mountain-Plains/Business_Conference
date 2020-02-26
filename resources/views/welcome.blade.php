@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Mountain-Plains Business Conference
                 </div>
 
                 <div class="links">
