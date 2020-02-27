@@ -18,6 +18,7 @@ class CreateSubmissionsTable extends Migration
             $table->string('title');
             $table->string('first_name', 100);
             $table->string('last_name', 100);
+            $table->string('paper');
             $table->boolean('isReviewed');
             $table->timestamps();
         });
