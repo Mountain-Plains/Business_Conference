@@ -12,7 +12,7 @@
             @endforeach
         @endif
         <h4>Admin Login</h4>
-       {{-- {!! Form::open(array('action' => array('CityController@store'))) !!}
+       {{-- {!! Form::open(array('action' => array('CityController@store'))) !!}gi
 
         <div class="form-group">
             {!! Form::label('name', 'City') !!}
