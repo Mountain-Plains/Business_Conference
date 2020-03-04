@@ -17,4 +17,4 @@ Route::get('/', function () {
 
 Route::resource('login','AdminController');
 
-Route::resource('template/create','TemplateController');
+Route::get('template/create','TemplateController@create');

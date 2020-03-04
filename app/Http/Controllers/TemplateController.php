@@ -10,7 +10,10 @@ use Illuminate\Routing\Controller as BaseController;
 class TemplateController extends Controller
 {
     public function index(){
-        return view('template.create');
+        //
     }
 
+    public function create(){
+        return view('template.create');
+    }
 }
