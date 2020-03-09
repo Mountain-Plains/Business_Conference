@@ -8,11 +8,15 @@
         <br>
         @if($errors->any())
             @foreach($errors->all() as $message)
-                <h5 class="alert alert-danger">{{$message}}</h5>
+                @if($message == 'Template Saved Successfully')
+                    <h5 class="alert alert-success">{{$message}}</h5>
+                @else
+                    <h5 class="alert alert-danger">{{$message}}</h5>
+                @endif
             @endforeach
         @endif
         <h4>Create Template</h4>
-        {!! Form::open(array('action' => array('TemplateController@create'))) !!}
+        {!! Form::open(array('action' => array('TemplateController@store'))) !!}
 
          <div class="form-group">
              {!! Form::label('name', 'Template Name') !!}
