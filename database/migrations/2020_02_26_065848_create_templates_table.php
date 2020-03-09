@@ -15,11 +15,14 @@ class CreateTemplatesTable extends Migration
     {
         Schema::create('templates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('event_name');
-            $table->text('description');
-            $table->string('location');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->string('name');
+            $table->string('headerColor');
+            $table->string('headerTextColor');
+            $table->string('footerColor');
+            $table->string('footerTextColor');
+            $table->string('backColor');
+            $table->string('logo'); //logo url
+            $table->string('bgImage'); //image url
             $table->timestamps();
         });
     }
