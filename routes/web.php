@@ -15,5 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('login','AdminController');
+Route::get('login','AdminController@index');
+Route::post('logincheck','AdminController@logincheck');
+
 
