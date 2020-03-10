@@ -1,58 +1,66 @@
-<!DOCTYPE html>
-<html>
+<html lang="en" class="">
 <head>
-    <title>laravel 6 file upload example - ItSolutionStuff.com.com</title>
-    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css">
+    <meta charset="UTF-8">
+    <title>Paper submission for review</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 </head>
-
 <body>
 <div class="container">
+    <div class="row justify-content-center">
+        <div class="card">
+            <div class="card-header">Mountain Plain Paper Submission</div>
 
-    <div class="panel panel-primary">
-        <div class="panel-heading"><h2>laravel 6 file upload example - ItSolutionStuff.com.com</h2></div>
-        <div class="panel-body">
+            <div class="card-body">
+                @if ($message = Session::get('success'))
 
-            @if ($message = Session::get('success'))
-                <div class="alert alert-success alert-block">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong>{{ $message }}</strong>
-                </div>
-                <img src="uploads/{{ Session::get('file') }}">
-            @endif
+                    <div class="alert alert-success alert-block">
 
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+                        <button type="button" class="close" data-dismiss="alert">×</button>
 
-            <form action="{{ route('file.upload.post') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
-                    <input type="text" class="form-control-file" name="title" id="title" aria-describedby="fileHelp", placeholder="title">
-                    <input type="text" class="form-control-file" name="firstName" id="firstName" aria-describedby="fileHelp", placeholder="First Name">
-                    <input type="text" class="form-control-file" name="lastName" id="lastName" aria-describedby="fileHelp", placeholder="Last Name">
-                    <input type="text" class="form-control-file" name="isReviewed" id="isReviewed" aria-describedby="fileHelp", placeholder="isReviewed">
+                        <strong>{{ $message }}</strong>
 
-                    <div class="col-md-6">
-                        <input type="file" name="paper" class="form-control">
+                    </div>
+                @endif
+
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                    <form action="{{ route('file.upload.post') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" class="form-control-file" name="title" id="title" aria-describedby="fileHelp", placeholder="Title">
                     </div>
 
-                    <div class="col-md-6">
-                        <button type="submit" class="btn btn-success">Upload</button>
+                    <div class="form-group">
+                        <input type="text" class="form-control-file" name="firstName" id="firstName" aria-describedby="fileHelp", placeholder="First Name">
                     </div>
 
-                </div>
-            </form>
+                    <div class="form-group">
+                        <input type="text" class="form-control-file" name="lastName" id="lastName" aria-describedby="fileHelp", placeholder="Last Name">
+                    </div>
 
+                    <div class="form-group">
+                        <input type="text" class="form-control-file" name="isReviewed" id="isReviewed" aria-describedby="fileHelp", placeholder="Is Reviewed">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" name="paper" id="paper" aria-describedby="fileHelp">
+                        <small id="fileHelp" class="form-text text-muted">Please upload a valid file. Size of file should not be more than 2MB.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+            </div>
         </div>
     </div>
 </div>
-</body>
-
 </html>

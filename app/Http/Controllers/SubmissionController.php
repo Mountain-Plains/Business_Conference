@@ -5,11 +5,11 @@ use Illuminate\Http\Request;
 use App\Submission;
 //use Illuminate\Support\Facades\Request;
 use Illuminate\Http\Response;
-use Illuminate\Http\File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Redirect;
 use Illuminate\Http\Validator;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\DB;
 class SubmissionController extends Controller
 {
     public function fileUpload()
@@ -24,7 +24,7 @@ class SubmissionController extends Controller
             'firstName'=>'required',
             'lastName'=>'required',
             'isReviewed'=>'required',
-            'paper' => 'required|mimes:pdf,xlx,csv|max:2048',
+            'paper' => 'required|mimes:doc,pdf,docx,zip|max:2048',
         ]);
 
         $Submission= new Submission;
@@ -34,13 +34,28 @@ class SubmissionController extends Controller
         $Submission->isReviewed= $request['isReviewed'];
 
 
-      $fileName= time().'.'.$request->paper->extension();
-        $old_path = $request->file('paper')->getPathName();
-        Storage::disk('local')->move($old_path, url('/storage/Paper'),$fileName);
+//      $fileName= time().'.'.$request->paper->extension();
+//        $old_path = $request->file('paper')->getPathName();
+////        Storage::disk('local')->put($old_path, url('/storage/Paper'),$fileName);
+//        Storage::disk('local')->put($old_path,'/Paper', $fileName);
+
+
+//        $title= $request->input('title');
+//        Validator::make($request->all(),['file'=>"required|string|paper|mimes:pdf,docx"])->validate();
+        $extension= $request->file("paper")->getClientOriginalExtension();
+        $stringPaperFormat=str_replace(" ", "", $request->input('title'));
+
+        $fileName= $stringPaperFormat.".".$extension;
+        $FileEnconded=  File::get($request->paper);
+        Storage::disk('local')->put('public/Paper/'.$fileName, $FileEnconded);
+        $newsubmission= array("title"=>$Submission->title, "first_name"=>$Submission->first_name, "last_name"=> $Submission->last_name,"isReviewed"=>$Submission->isReviewed, "paper"=>$fileName);
+        $created= DB::table('submissions')->insert($newsubmission);
+        if($created){
+            return "Sucessful";
+        }else{
+            return "Not Sucessful";
+        }
         $Submission->save();
-        return back()
-            ->with('success','You have successfully upload file.')
-            ->with('file',$fileName);
 
     }
 }
