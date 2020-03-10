@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
+Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
