@@ -22,16 +22,10 @@ Route::get('/submissions', function () {
     return view('submissions');
 });
 
-Route::resource('login','AdminController');
-
 Route::get('/papers/{file}', 'DownloadController@download');
-
 
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
-
-
-Route::resource('login','AdminController');
 
 Route::resource('template','TemplateController');
 
