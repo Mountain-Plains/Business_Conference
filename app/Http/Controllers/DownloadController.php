@@ -11,6 +11,7 @@ class DownloadController extends Controller
 {
     public function download($file)
     {
-	return response()->download('public/Papers/'.$file);
+#	return response()->download('public/Papers/'.$file);
+	return Storage::download('public/Papers/'.$file);
     }
 }
