@@ -11,6 +11,6 @@ class DownloadController extends Controller
 {
     public function download($file)
     {
-	return response()->download(public_path('papers/'.$file));
+	return response()->download('public/Papers/'.$file);
     }
 }
