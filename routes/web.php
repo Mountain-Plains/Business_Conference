@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('login','AdminController');
+
+Route::resource('template','TemplateController');
+
+Route::get('template/create','TemplateController@create');
+//Route::post('template/save','TemplateController@store');
+
