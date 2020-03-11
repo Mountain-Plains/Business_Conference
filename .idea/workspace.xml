@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d145c1ec-f688-4844-94f2-790221637279" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_26_062222_create_submissions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_26_062222_create_submissions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,6 +254,7 @@
       <updated>1581089047255</updated>
       <workItem from="1581089051145" duration="1326000" />
       <workItem from="1582693908577" duration="5881000" />
+      <workItem from="1583041966989" duration="107000" />
     </task>
     <servers />
   </component>
@@ -264,10 +262,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1582693914665">
+    <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1583041967129">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1582693914665" />
+    <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583041967128" />
   </component>
   <component name="masterDetails">
     <states>
