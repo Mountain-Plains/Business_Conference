@@ -15,5 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/submissions', function () {
+    return view('submissions');
+});
+
 Route::resource('login','AdminController');
+
+Route::get('/papers/{file}', 'DownloadController@download');
+
+
 
