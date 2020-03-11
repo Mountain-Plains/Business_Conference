@@ -12,9 +12,14 @@
                 <h5 class="alert alert-danger">{{$message}}</h5>
             @endforeach
         @endif
+<<<<<<< HEAD
         <h3>Admin Login</h3>
         {{Form::open (array ('action' => 'AdminController@logincheck'))}}
         {{csrf_field()}}
+=======
+        <h4>Admin Login</h4>
+       {{-- {!! Form::open(array('action' => array('CityController@store'))) !!}
+>>>>>>> origin/dev
 
         <div class="form-group">
             {!! Form::label('email', 'Email') !!}
