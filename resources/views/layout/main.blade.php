@@ -6,8 +6,9 @@
     @include('include.css&js')
 </head>
 
-<body>
+<body class="bg-info">
 @yield('content')
+
 </body>
 
 </html>
