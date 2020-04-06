@@ -14,6 +14,9 @@
 
 
 Route::get('/', 'HomeController@index');
+Route::get("/front", function(){
+    return view('front');
+});
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
 Route::get('home-create', 'HomeController@create')->name('home.create');
