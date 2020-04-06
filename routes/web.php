@@ -11,31 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('login','AdminController@index');
-Route::post('logincheck','AdminController@logincheck');
-
-Route::get('/submissions', function () {
-    return view('submissions');
-});
-
-Route::resource('login','AdminController');
-
-Route::get('/papers/{file}', 'DownloadController@download');
 
 
+Route::get('/', 'HomeController@index');
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
-
-
-Route::resource('login','AdminController');
-
-Route::resource('template','TemplateController');
-
-Route::get('template/create','TemplateController@create');
-//Route::post('template/save','TemplateController@store');
+Route::get('home-create', 'HomeController@create')->name('home.create');
+Route::post('home-create', 'HomeController@store')->name('home.create.post');
+Route::get('/home-edit/edit/{id}','HomeController@edit');
+Route::put('/home-edit/update/{id}','HomeController@update');
+Route::get('schedule', 'ScheduleController@index')->name('Schedule.index');
+Route::get('schedule-create', 'ScheduleController@create')->name('schedule.create');
+Route::post('schedule-create', 'ScheduleController@store')->name('schedule.create.post');
 
 
