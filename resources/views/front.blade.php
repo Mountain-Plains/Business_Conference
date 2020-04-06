@@ -1,44 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Eterna Bootstrap Template - Index</title>
-    <meta content="" name="descriptison">
-    <meta content="" name="keywords">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-    * Template Name: Eterna - v2.0.0
-    * Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
-</head>
+@extends('layout.main')
 
 <body>
 
 <!-- ======= Top Bar ======= -->
 <section id="topbar" class="d-none d-lg-block">
-    <div class="container d-flex">
-        <div class="contact-info mr-auto">
-            <i class="icofont-envelope"></i><a href="mailto:contact@example.com">contact@example.com</a>
-            <i class="icofont-phone"></i> +1 5589 55488 55
-        </div>
         <div class="social-links">
             <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
             <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
@@ -106,7 +71,10 @@
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2 class="animated fadeInDown">Welcome to <span>Eterna</span></h2>
-                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut
+                                et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea
+                                voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi
+                                architecto.</p>
                             <a href="" class="btn-get-started animated fadeInUp">Read More</a>
                         </div>
                     </div>
@@ -117,7 +85,10 @@
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2 class="animated fadeInDown">Lorem <span>Ipsum Dolor</span></h2>
-                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut
+                                et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea
+                                voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi
+                                architecto.</p>
                             <a href="" class="btn-get-started animated fadeInUp">Read More</a>
                         </div>
                     </div>
@@ -128,7 +99,10 @@
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2 class="animated fadeInDown">Sequi ea <span>Dime Lara</span></h2>
-                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut
+                                et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea
+                                voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi
+                                architecto.</p>
                             <a href="" class="btn-get-started animated fadeInUp">Read More</a>
                         </div>
                     </div>
@@ -161,21 +135,24 @@
                     <div class="icon-box">
                         <i class="icofont-computer"></i>
                         <h3><a href="">Lorem Ipsum</a></h3>
-                        <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                        <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
+                            cupiditate non provident</p>
                     </div>
                 </div>
                 <div class="col-lg-4 mt-4 mt-lg-0">
                     <div class="icon-box">
                         <i class="icofont-image"></i>
                         <h3><a href="">Dolor Sitema</a></h3>
-                        <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                        <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat tarad limino ata</p>
                     </div>
                 </div>
                 <div class="col-lg-4 mt-4 mt-lg-0">
                     <div class="icon-box">
                         <i class="icofont-tasks-alt"></i>
                         <h3><a href="">Sed ut perspiciatis</a></h3>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur</p>
                     </div>
                 </div>
             </div>
@@ -194,17 +171,27 @@
                 <div class="col-lg-6 pt-4 pt-lg-0 content">
                     <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
                     <p class="font-italic">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore
                         magna aliqua.
                     </p>
                     <ul>
-                        <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                        <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                        <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                        <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat.
+                        </li>
+                        <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate
+                            velit.
+                        </li>
+                        <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda
+                            mastiro dolore eu fugiat nulla pariatur.
+                        </li>
                     </ul>
                     <p>
-                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                        in voluptate
+                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in
                         culpa qui officia deserunt mollit anim id est laborum
                     </p>
                 </div>
@@ -281,7 +268,9 @@
 
             <div class="section-title">
                 <h2>Clients</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
+                    fugiat sit in iste officiis commodi quidem hic quas.</p>
             </div>
 
             <div class="owl-carousel clients-carousel">
@@ -359,7 +348,8 @@
 
                 <div class="col-lg-3 col-md-6 footer-info">
                     <h3>About Eterna</h3>
-                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
+                        valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
                     <div class="social-links mt-3">
                         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
