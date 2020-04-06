@@ -1,7 +1,4 @@
 @extends('layout.main')
-
-<body>
-
 <!-- ======= Top Bar ======= -->
 <section id="topbar" class="d-none d-lg-block">
         <div class="social-links">
@@ -11,7 +8,6 @@
             <a href="#" class="skype"><i class="icofont-skype"></i></a>
             <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
         </div>
-    </div>
 </section>
 
 <!-- ======= Header ======= -->
@@ -394,6 +390,4 @@
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
 
-</body>
 
-</html>
