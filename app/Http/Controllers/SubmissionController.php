@@ -14,7 +14,7 @@ class SubmissionController extends Controller
 {
     public function fileUpload()
     {
-        return view('Upload');
+        return view('Submission.Upload');
     }
 
 

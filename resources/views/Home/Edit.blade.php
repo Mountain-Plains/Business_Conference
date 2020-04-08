@@ -37,13 +37,15 @@
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             {{method_field("PUT")}}
                             <div class="form-group">
-                                <input type="text" class="form-control-file" name="Title" id="Title" aria-describedby="fileHelp", placeholder="Title" value="{{$Home->Title}}">
+                                <textarea class="form-control" id="summary-ckeditor" name="description"><?=$Home->description?></textarea>
                             </div>
 
                             <div class="form-group">
-                                <textarea class="form-control" id="summary-ckeditor" name="body"><?=$Home->body?></textarea>
+                                <input type="text" class="form-control-file" name="Location" id="Location" aria-describedby="fileHelp", placeholder="Location" value="{{$Home->Location}}">
                             </div>
-
+                            <div class="form-group">
+                                <input type="text" class="form-control-file" name="Time" id="Location" aria-describedby="fileHelp", placeholder="Time" value="{{$Home->Time}}">
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
 

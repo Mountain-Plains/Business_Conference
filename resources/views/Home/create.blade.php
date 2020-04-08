@@ -36,13 +36,16 @@
                         <form action="{{ route('home.create.post') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control-file" name="Title" id="Title" aria-describedby="fileHelp", placeholder="Title">
+                                <label>About Us</label>
+                                <textarea class="form-control" id="summary-ckeditor" name="description"></textarea>
                             </div>
 
                             <div class="form-group">
-                                <textarea class="form-control" id="summary-ckeditor" name="body"></textarea>
+                                <input type="text" class="form-control-file" name="Location" id="Location" aria-describedby="fileHelp", placeholder="Location">
                             </div>
-
+                            <div class="form-group">
+                                <input type="text" class="form-control-file" name="Time" id="Location" aria-describedby="fileHelp", placeholder="Time">
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
 

@@ -26,5 +26,11 @@ Route::put('/home-edit/update/{id}','HomeController@update');
 Route::get('schedule', 'ScheduleController@index')->name('Schedule.index');
 Route::get('schedule-create', 'ScheduleController@create')->name('schedule.create');
 Route::post('schedule-create', 'ScheduleController@store')->name('schedule.create.post');
-
-
+Route::get('/schedule-edit/edit/{id}','ScheduleController@edit');
+Route::put('/schedule-edit/update/{id}','ScheduleController@update');
+Route::get('/schedule/deleteItem/{id}','ScheduleController@destroy');
+Route::get('/Ticket', 'TicketController@index');
+Route::get('Ticket-create', 'TicketController@create')->name('Ticket.create');
+Route::post('Ticket-create', 'TicketController@store')->name('Ticket.create.post');
+Route::get('/Ticket-edit/edit/{id}','TicketController@edit');
+Route::put('/Ticket-edit/update/{id}','TicketController@update');
