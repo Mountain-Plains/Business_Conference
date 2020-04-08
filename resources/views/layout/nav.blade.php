@@ -13,7 +13,7 @@
                 <li><a href="/schedule">Schedule</a></li>
                 <li><a href="/file-upload">Paper Submission</a></li>
                 <li><a href="/Ticket">Ticket</a></li>
-                <li><a href="">Sponsor</a></li>
+                <li><a href="/Sponsor">Sponsor</a></li>
 
             </ul>
         </nav><!-- .nav-menu -->
