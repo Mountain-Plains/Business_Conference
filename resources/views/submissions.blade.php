@@ -61,31 +61,40 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            table {
+                border-collapse: collapse;
+		width:70%;
+            }
+		
+            table, th, td {
+                border: 1px solid black;
+            }
+
+            tr:nth-child(even) {background-color: #f2f2f2;}
         </style>
     </head>
     <body>
-	<table style="width:100%">
+	<table>
 	<tr>
 		<th>Title</th>
 		<th>First name</th>
 		<th>Last name</th>
 		<th>paper</th>
 	</tr>
-	<tr>
-		<td>
-		</td>
 		<?php
 
 		$submissions = App\Submission::all();
 
 		foreach ($submissions as $paper) {
+			echo "<tr>";
 			echo "<td>" . $paper->title . "</td>";
 			echo "<td>" . $paper->first_name . "</td>";
 			echo "<td>" . $paper->last_name . "</td>";
-			echo "<td><a href=\"" . $paper->paper . "\">Download</a></td>";
+			echo "<td><a href=\"Paper/" . $paper->paper . "\">Download</a></td>";
+			echo "</tr>";
 		}
 		?>
-	</tr>
 	</table> 
     </body>
 </html>

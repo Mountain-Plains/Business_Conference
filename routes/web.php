@@ -22,7 +22,7 @@ Route::get('/submissions', function () {
 
 Route::resource('login','AdminController');
 
-Route::get('/papers/{file}', 'DownloadController@download');
+Route::get('/Paper/{file}', 'DownloadController@download');
 
 
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
