@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-group">
-            <h5><a href="{{ url('forgot_password') }}" class="label-agree-term">Forget Password</a></h5>
+            <h5><a href="{{ action('Auth\ForgotPasswordController@forgot') }}" class="label-agree-term">Forget Password</a></h5>
         </div>
 
         {!! Form::submit('Submit', ['class' => 'btn btn-secondary']) !!}

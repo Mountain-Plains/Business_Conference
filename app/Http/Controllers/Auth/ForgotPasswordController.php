@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 Use \DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use function foo\func;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;;
+//use Reminder;
+use App\User;
 
 class ForgotPasswordController extends Controller
 {
@@ -31,18 +37,29 @@ class ForgotPasswordController extends Controller
     {
        $users = User::whereEmail($request -> email)->first();
 
-       if (count($user) == 0)
+       if ($users == null)
        {
            return redirect()->back()->with(['error' => 'Email does not exist']);
        }
 
        $users = Sentinel::findById ($users -> id);
-       $reminder = Reminder::exists($users) ? : Reminder::create($users);
-       $this->sendEmail($users, $reminder->code);
+       //$reminder = Reminder::exists($users) ? : Reminder::create($users);
+       $this->sendEmail($users);
 
-       return redirect()->back()->with(['success' => 'Reset code sent to your email']);
+       return redirect()->back()->withErrors(['success' => 'Reset code sent to your email']);
+
     }
 
+    public function sendEmail($user){
+        Mail::send(
+            'email.forgot',
+            ['user' => $user],
+            function($message) use ($user){
+                $message -> to ($user -> email);
+                $message -> subject($user->first_name.", reset your password,");
+            }
+        );
+    }
 
 }
 
