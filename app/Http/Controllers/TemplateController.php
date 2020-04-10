@@ -10,6 +10,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\DB;
 
 
 class TemplateController extends Controller
@@ -26,13 +27,10 @@ class TemplateController extends Controller
         try {
             $this->validate($request, [
                 'name' => 'required',
-                'headerColor'=>'nullable',
-                'headerTextColor'=>'nullable',
-                'footerColor'=>'nullable',
-                'footerTextColor'=>'nullable',
-                'backColor'=>'nullable',
-                'logo'=>'nullable',
-                'bgImage'=>'nullable'
+                'headerColor'=>'required',
+                'headerTextColor'=>'required',
+                'backColor'=>'required',
+                'primaryTextColor'=>'required',
             ]);
 
             $template = new Template;
@@ -40,11 +38,8 @@ class TemplateController extends Controller
             $template->name = $request['name'];
             $template->headerColor = $request['headerColor'];
             $template->headerTextColor = $request['headerTextColor'];
-            $template->footerColor = $request['footerColor'];
-            $template->footerTextColor = $request['footerTextColor'];
             $template->backColor = $request['backColor'];
-            $template->logo = $request['logo'];
-            $template->bgImage = $request['bgImage'];
+            $template->primaryTextColor = $request['primaryTextColor'];
 
             $template->save();
             return back()->withErrors('Template Saved Successfully');

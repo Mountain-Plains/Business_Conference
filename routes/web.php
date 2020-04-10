@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index');
 Route::get("/front", function(){
     return view('front');
 });
+
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
 Route::get('home-create', 'HomeController@create')->name('home.create');
@@ -40,3 +41,8 @@ Route::post('sponsor-upload', 'SponsorController@store')->name('Sponsor.create.p
 Route::get('/sponsor-edit/edit/{id}','SponsorController@edit');
 Route::put('/sponsor-edit/update/{id}','SponsorController@update');
 Route::get('/sponsor/deleteItem/{id}','SponsorController@destroy');
+
+//Template
+Route::resources([
+    'template' => 'TemplateController',
+]);
