@@ -46,3 +46,14 @@ Route::get('/sponsor/deleteItem/{id}','SponsorController@destroy');
 Route::resources([
     'template' => 'TemplateController',
 ]);
+Route::post('/template/applyTemplate','TemplateController@applyTemplate');
+
+Route::delete('template/{id}', [
+    'as' => 'template.destroy',
+    'uses' => 'TemplateController@destroy'
+]);
+
+Route::post('template/{id}', [
+    'as' => 'template.edit',
+    'uses' => 'TemplateController@edit'
+]);
