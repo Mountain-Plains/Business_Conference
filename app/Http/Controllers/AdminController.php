@@ -15,7 +15,7 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
-    public function logincheck(Request $request)
+    public function loginCheck(Request $request)
     {
         $this->validate($request, [
             'email' => 'required|email',
@@ -29,7 +29,7 @@ class AdminController extends Controller
 
         if (Auth::attempt($user_data))
         {
-            return $this->successlogin();
+            return $this->successLogin();
         }
         else
         {
@@ -38,8 +38,14 @@ class AdminController extends Controller
 
     }
 
-    function  successlogin()
+    function  successLogin()
     {
     return view ('admin.successlogin');
     }
+
+
+    public function resetpassword(){
+        return view('admin.resetpassword');
+    }
+
 }

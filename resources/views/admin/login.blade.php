@@ -27,6 +27,9 @@
             {!! Form::password('password', ['class' => 'form-control mx-sm-3','placeholder'=>'Admin Password Here']) !!}
         </div>
 
+        <div class="form-group">
+            <h5><a href="{{ url('forgot_password') }}" class="label-agree-term">Forget Password</a></h5>
+        </div>
 
         {!! Form::submit('Submit', ['class' => 'btn btn-secondary']) !!}
 

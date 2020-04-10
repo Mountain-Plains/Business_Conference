@@ -17,5 +17,9 @@ Route::get('/', function () {
 
 Route::get('login','AdminController@index');
 Route::post('logincheck','AdminController@logincheck');
+//Route::get('resetpassword','AdminController@resetpassword');
+//
 
+
+Route::get('/forgot_password','Auth\ForgotPasswordController@forgot');
 
