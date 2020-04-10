@@ -12,6 +12,7 @@
                 <h5 class="alert alert-danger">{{$message}}</h5>
             @endforeach
         @endif
+
         <h3>Admin Login</h3>
         {{Form::open (array ('action' => 'AdminController@logincheck'))}}
         {{csrf_field()}}
