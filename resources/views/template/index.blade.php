@@ -21,7 +21,7 @@
                     <table class="table table-responsive table-striped">
                         <tr>
                             <th>id</th>
-                            <th>Template</th>
+                            <th>Template Name</th>
                             <th>Header Color</th>
                             <th>Header Text Color</th>
                             <th>Background Color</th>
@@ -35,12 +35,15 @@
                                 <td>{{$template->headerTextColor}}</td>
                                 <td>{{$template->backColor}}</td>
                                 <td>{{$template->primaryTextColor}}</td>
-                                                    <td><a class="btn btn-info btn-sm" href="{{action('TemplateController@applyTemplate',['id'=>$template->id])}}"><i
+                                                    <td class="form-inline"><a class="btn btn-info btn-sm" href="{{action('TemplateController@applyTemplate',['template'=>$template->id])}}"><i
                                                                 class="fa fa-eye" aria-hidden="true"></i> Apply Template</a>
-                                                        <a class="btn btn-success btn-sm" href="{{action('TemplateController@edit',['id'=>$template->id])}}"><i
+                                                        <a class="btn btn-success btn-sm" href="{{action('TemplateController@edit',['template'=>$template->id])}}"><i
                                                                 class="fa fa-eye" aria-hidden="true"></i> Edit</a>
-                                                        <a class="btn btn-danger btn-sm" href="{{action('TemplateController@destroy',['id'=>$template->id])}}"><i
-                                                                class="fa fa-eye" aria-hidden="true"></i> Delete</a>
+                                                        {!! Form::open(array('action' => array('TemplateController@destroy',$template->id),'method'=>'DELETE')) !!}
+
+                                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+
+                                                        {!! Form::close() !!}
                                 </td>
                             </tr>
                         @endforeach

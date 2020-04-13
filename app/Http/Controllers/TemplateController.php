@@ -80,7 +80,14 @@ class TemplateController extends Controller
         }
     }
 
+    public function destroy($id){
+        $template = Template::find($id);
+        $template->delete();
+
+        return redirect()->action('TemplateController@index');
+    }
+
     public function applyTemplate($id){
-        
+
     }
 }
