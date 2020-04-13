@@ -55,14 +55,7 @@ class ScheduleController extends Controller
         $schedule->EventStartTime= $request['EventStartTime'];
         $schedule->EventEndTime= $request['EventEndTime'];
         $schedule->description= $request['description'];
-        $newSchedule= array("EventDate"=>$schedule->EventDate, "EventStartTime"=>$schedule->EventStartTime,"EventEndTime"=>$schedule->EventEndTime,"description"=>$schedule->description);
-        $created= DB::table('schedules')->insert($newSchedule);
-        if ($created){
-            return "Sucessful";
-        }
-        else{
-            return 'Not Sucessful';
-        }
+//
         $schedule->save();
     }
 

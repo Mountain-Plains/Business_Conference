@@ -18,6 +18,8 @@ Route::get("/front", function(){
     return view('front');
 });
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
+Route::get('admin.login', 'AdminController@index')->name('admin.login');
+
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
 Route::get('home-create', 'HomeController@create')->name('home.create');
 Route::post('home-create', 'HomeController@store')->name('home.create.post');
