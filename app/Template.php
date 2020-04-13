@@ -10,5 +10,5 @@ class Template extends Model
     //use SoftDeletes;
 
     protected $table = 'templates';
-//    protected $fillable =['name'];
+    protected $fillable =['name','headColor','headTextColor','backColor','primaryTextColor'];
 }

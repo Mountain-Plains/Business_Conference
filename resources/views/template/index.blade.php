@@ -12,6 +12,11 @@
                     <div class="card-header"><h4>List of templates</h4></div>
                     {{--        @include('include.navbar')--}}
                     <br>
+                    @if($errors->any())
+                        @foreach($errors->all() as $message)
+                                <h5 class="alert alert-info">{{$message}}</h5>
+                        @endforeach
+                    @endif
                     <div>
                         <a class="btn btn-info btn-sm"
                            href="{{action('TemplateController@create')}}">

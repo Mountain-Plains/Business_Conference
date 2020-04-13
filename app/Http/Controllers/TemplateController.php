@@ -63,7 +63,7 @@ class TemplateController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $this->validate($request, [
+            $validated = $request->validate([
                 'name' => 'required',
                 'headerColor' => 'required',
                 'headerTextColor' => 'required',
@@ -72,6 +72,9 @@ class TemplateController extends Controller
             ]);
 
             $template = Template::find($id);
+            //dd($template);
+            $template->fill($validated);
+
             $template->save();
 
             return back()->withErrors('Template Updated Successfully');
@@ -84,7 +87,9 @@ class TemplateController extends Controller
         $template = Template::find($id);
         $template->delete();
 
-        return redirect()->action('TemplateController@index');
+        $error_msg = "\"".$template->name."\" template deleted successfully.";
+
+        return redirect()->action('TemplateController@index')->withErrors($error_msg);
     }
 
     public function applyTemplate($id){
