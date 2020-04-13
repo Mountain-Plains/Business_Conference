@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="bg-info">
+<body style="background-color:{{$template->backColor}};">
 @include('layout.nav')
 @yield('content')
 

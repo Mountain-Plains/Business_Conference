@@ -37,6 +37,7 @@
                                 <td>{{$template->primaryTextColor}}</td>
                                                     <td class="form-inline"><a class="btn btn-info btn-sm" href="{{action('TemplateController@applyTemplate',['template'=>$template->id])}}"><i
                                                                 class="fa fa-eye" aria-hidden="true"></i> Apply Template</a>
+                                                        <span> </span>
                                                         <a class="btn btn-success btn-sm" href="{{action('TemplateController@edit',['template'=>$template->id])}}"><i
                                                                 class="fa fa-eye" aria-hidden="true"></i> Edit</a>
                                                         {!! Form::open(array('action' => array('TemplateController@destroy',$template->id),'method'=>'DELETE')) !!}

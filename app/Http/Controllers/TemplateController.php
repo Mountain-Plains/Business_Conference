@@ -88,6 +88,6 @@ class TemplateController extends Controller
     }
 
     public function applyTemplate($id){
-
+        $template = Template::find($id);
     }
 }
