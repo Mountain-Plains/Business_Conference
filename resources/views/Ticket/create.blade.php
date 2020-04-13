@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('title')
-    Create a schedule
+    Create Ticket for event
 @endsection
 @section('content')
 
@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="card">
-                    <div class="card-header">Mountain Plain Paper Submission</div>
+                    <div class="card-header">Ticket Creation </div>
 
                     <div class="card-body">
                         @if ($message = Session::get('success'))
@@ -33,29 +33,11 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('schedule.create.post') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('Ticket.create.post') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control-file" name="Day" id="Day" aria-describedby="fileHelp", placeholder="Day">
+                                <input type="text" class="form-control-file" name="URL" id="URL" aria-describedby="fileHelp", placeholder="URL of ticket">
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control-file" name="EventDate" id="datepicker" aria-describedby="fileHelp", placeholder="EventDate">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" class="form-control-file" name="EventStartTime" id="timepicker" aria-describedby="fileHelp", placeholder="Event Start Time">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" class="form-control-file" name="EventEndTime" id="timepickers" aria-describedby="fileHelp", placeholder="Event End Time">
-
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" class="form-control-file" name="description" id="description" aria-describedby="fileHelp", placeholder="Description" >
-                            </div>
-
-
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
 
@@ -65,6 +47,3 @@
         </div>
     </div>
 @endsection
-
-
-

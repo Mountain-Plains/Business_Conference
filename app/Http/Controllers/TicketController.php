@@ -1,22 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Home;
 use Illuminate\Support\Facades\DB;
-class HomeController extends Controller
+use App\Ticket;
+use Illuminate\Http\Request;
+
+class TicketController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $data['data']= DB::table('homes')->get();
-
-        return view('Home.index', $data);
+        $data['data']= DB::table('tickets')->get();
+        return view('Ticket.index', $data);
     }
 
     /**
@@ -26,7 +20,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('Home.create');
+        return view('Ticket.create');
     }
 
     /**
@@ -38,26 +32,20 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description'=>'required',
-            'Location'=>'required',
-            'Time'=>'required',
-
+            'URL'=>'required',
         ]);
-
-        $Home= new Home();
-        $Home->description= $request['description'];
-        $Home->Location= $request['Location'];
-        $Home->Time= $request['Time'];
-
-        $newHome= array("description"=>$Home->description, "Location"=>$Home->Location,"Time"=>$Home->Time);
-        $created= DB::table('homes')->insert($newHome);
+        $Ticket= new Ticket();
+        $Ticket->URL= $request['URL'];
+        $newticket= array("URL"=>$Ticket->URL);
+        $created= DB::table('tickets')->insert($newticket);
         if ($created){
             return "Sucessful";
         }
         else{
             return 'Not Sucessful';
         }
-        $Home->save();
+        $Ticket->save();
+
     }
 
     /**
@@ -79,8 +67,8 @@ class HomeController extends Controller
      */
     public function edit($id)
     {
-        $Home=Home::find($id);
-        return view('Home.Edit', compact('Home', 'id'));
+        $Ticket=Ticket::find($id);
+        return view('Ticket.Edit', compact('Ticket', 'id'));
     }
 
     /**
@@ -92,22 +80,16 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update_Home= Home::find($id);
+        $update_Ticket= Ticket::find($id);
         $request->validate([
-            'description'=>'required',
-            'Location'=>'required',
-            'Time'=>'required',
+            'URL'=>'required',
 
         ]);
-        $update_Home->description=$request->get('description');
-        $update_Home->Location=$request->get('Location');
-        $update_Home->Time=$request->get('Time');
-        $update_Home->save();
+        $update_Ticket->URL=$request->get('URL');
+        $update_Ticket->save();
 
-        return redirect()->action('HomeController@index')->with('message','Update pages Successfully!');
-
+        return redirect()->action('TicketController@index')->with('message','Update ticket Successfully!');
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -119,4 +101,5 @@ class HomeController extends Controller
     {
         //
     }
+
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Schedule;
+use App\schedule;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
@@ -9,6 +9,7 @@ use Illuminate\Http\Redirect;
 use Illuminate\Http\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ScheduleController extends Controller
 {
@@ -19,8 +20,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $data['data']= DB::table('schedules')->get();
-
+        $data['data']= DB::table('schedules')->groupBy('Day')->get();
         return view('Schedule.index', $data);
     }
 
@@ -43,6 +43,7 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'Day'=>'required',
             'EventDate'=>'required',
             'EventStartTime'=>'required',
             'EventEndTime'=>'required',
@@ -51,11 +52,19 @@ class ScheduleController extends Controller
         ]);
 
         $schedule= new Schedule();
-        $schedule->EventDate= $request['EventDate'];
-        $schedule->EventStartTime= $request['EventStartTime'];
-        $schedule->EventEndTime= $request['EventEndTime'];
+        $schedule->Day= $request['Day'];
+        $schedule->EventDate= Carbon::parse($request['EventDate']);
+        $schedule->EventStartTime=Carbon::parse( $request['EventStartTime']);
+        $schedule->EventEndTime= Carbon::parse($request['EventEndTime']);
         $schedule->description= $request['description'];
-//
+        $newSchedule= array("Day"=>$schedule->Day,"EventDate"=>$schedule->EventDate, "EventStartTime"=>$schedule->EventStartTime,"EventEndTime"=>$schedule->EventEndTime,"description"=>$schedule->description);
+        $created= DB::table('schedules')->insert($newSchedule);
+        if ($created){
+            return "Sucessful";
+        }
+        else{
+            return 'Not Sucessful';
+        }
         $schedule->save();
     }
 
@@ -78,7 +87,8 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $schedule=schedule::find($id);
+        return view('Schedule.Edit', compact('schedule', 'id'));
     }
 
     /**
@@ -90,7 +100,23 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update_schedule= schedule::find($id);
+       $request->validate([
+        'Day'=>'required',
+        'EventDate'=>'required',
+        'EventStartTime'=>'required',
+        'EventEndTime'=>'required',
+        'description'=>'required',
+
+    ]);
+        $update_schedule->Day=$request->get('Day');
+        $update_schedule->EventDate=$request->get('EventDate');
+        $update_schedule->EventStartTime=$request->get('EventStartTime');
+        $update_schedule->EventEndTime=$request->get('EventEndTime');
+        $update_schedule->description=$request->get('description');
+        $update_schedule->save();
+        return redirect()->action('ScheduleController@index')->with('message','Update schedule Successfully!');
+
     }
 
     /**
@@ -101,6 +127,8 @@ class ScheduleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete= schedule::findorFail($id);
+        $delete->delete();
+        return redirect()->action('ScheduleController@index')->with('message','Deleted schedule Successfully!');
     }
 }

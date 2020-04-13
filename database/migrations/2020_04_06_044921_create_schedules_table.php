@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTemplatesTable extends Migration
+class CreateSchedulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateTemplatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('templates', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('headerColor');
-            $table->string('headerTextColor');
-            $table->string('backColor');
-            $table->string('primaryTextColor');
-//            $table->string('logo'); //logo filename
+            $table->date('EventDate');
+            $table->time('EventStartTime');
+            $table->time('EventEndTime');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateTemplatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('templates');
+        Schema::dropIfExists('schedules');
     }
 }

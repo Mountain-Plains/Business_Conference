@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSchedulesTable extends Migration
+class CreateHomesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('homes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('EventDate');
-            $table->time('EventStartTime');
-            $table->time('EventEndTime');
-            $table->string('description');
-
+            $table->text('description');
+            $table->text('Location');
+            $table->text('Time');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('homes');
     }
 }
