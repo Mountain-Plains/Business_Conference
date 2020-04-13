@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\City;
 use App\Template;
 use http\Exception\BadQueryStringException;
 use Illuminate\Http\Request;
@@ -15,22 +17,26 @@ use Illuminate\Support\Facades\DB;
 
 class TemplateController extends Controller
 {
-    public function index(){
-        return $this->create();
+    public function index()
+    {
+        $templates = Template::orderByRaw('ifnull(updated_at,created_at) desc')->paginate(10);
+        return view('template.index')->with(compact('templates'));
     }
 
-    public function create(){
+    public function create()
+    {
         return view('template.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         try {
             $this->validate($request, [
                 'name' => 'required',
-                'headerColor'=>'required',
-                'headerTextColor'=>'required',
-                'backColor'=>'required',
-                'primaryTextColor'=>'required',
+                'headerColor' => 'required',
+                'headerTextColor' => 'required',
+                'backColor' => 'required',
+                'primaryTextColor' => 'required',
             ]);
 
             $template = new Template;
@@ -43,9 +49,38 @@ class TemplateController extends Controller
 
             $template->save();
             return back()->withErrors('Template Saved Successfully');
-        }
-        catch (BadQueryStringException $exception){
+        } catch (BadQueryStringException $exception) {
             return back()->withErrors($exception);
         }
+    }
+
+    public function edit($id)
+    {
+        $template = Template::find($id);
+        return view('template.edit')->with('template', $template);
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $this->validate($request, [
+                'name' => 'required',
+                'headerColor' => 'required',
+                'headerTextColor' => 'required',
+                'backColor' => 'required',
+                'primaryTextColor' => 'required',
+            ]);
+
+            $template = Template::find($id);
+            $template->save();
+
+            return back()->withErrors('Template Updated Successfully');
+        } catch (BadQueryStringException $exception) {
+            return back()->withErrors($exception);
+        }
+    }
+
+    public function applyTemplate($id){
+        
     }
 }
