@@ -40,3 +40,10 @@ Route::post('sponsor-upload', 'SponsorController@store')->name('Sponsor.create.p
 Route::get('/sponsor-edit/edit/{id}','SponsorController@edit');
 Route::put('/sponsor-edit/update/{id}','SponsorController@update');
 Route::get('/sponsor/deleteItem/{id}','SponsorController@destroy');
+
+
+
+//admin panel
+Route::get('admin','AdminController@index');
+Route::post('logincheck','AdminController@logincheck')->name('login');
+
