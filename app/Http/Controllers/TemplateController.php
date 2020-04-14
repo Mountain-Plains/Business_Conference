@@ -86,6 +86,10 @@ class TemplateController extends Controller
     }
 
     public function destroy($id){
+        $templates = Template::get();
+        if(count($templates)<=1){
+            return redirect()->action('TemplateController@index')->withErrors('Cannot delete! Atleast one template is required in database.');
+        }
         $template = Template::find($id);
         $template->delete();
 
