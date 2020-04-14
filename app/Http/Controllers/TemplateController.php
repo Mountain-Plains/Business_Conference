@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\City;
 use App\Template;
+use Carbon\Carbon;
 use http\Exception\BadQueryStringException;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
@@ -19,7 +20,7 @@ class TemplateController extends Controller
 {
     public function index()
     {
-        $templates = Template::orderByRaw('ifnull(updated_at,created_at) desc')->paginate(10);
+        $templates = Template::orderByRaw('ifnull(updated_at,created_at) desc')->paginate(8);
         return view('template.index')->with(compact('templates'));
     }
 
@@ -48,9 +49,9 @@ class TemplateController extends Controller
             $template->primaryTextColor = $request['primaryTextColor'];
 
             $template->save();
-            return back()->withErrors('Template Saved Successfully');
+            return redirect()->action('TemplateController@index')->withErrors('Template Saved Successfully');
         } catch (BadQueryStringException $exception) {
-            return back()->withErrors($exception);
+            return redirect()->withErrors($exception);
         }
     }
 
@@ -77,7 +78,7 @@ class TemplateController extends Controller
 
             $template->save();
 
-            return back()->withErrors('Template Updated Successfully');
+            return back()->action('TemplateController@index')->withErrors('Template Updated Successfully');
         } catch (BadQueryStringException $exception) {
             return back()->withErrors($exception);
         }
@@ -94,5 +95,11 @@ class TemplateController extends Controller
 
     public function applyTemplate($id){
         $template = Template::find($id);
+        $template->applied_at = Carbon::now();
+        $template->save();
+
+        $msg = "\"".$template->name."\" template applied.";
+
+        return redirect()->action('TemplateController@index')->withErrors($msg);
     }
 }

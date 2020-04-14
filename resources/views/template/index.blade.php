@@ -40,9 +40,12 @@
                                 <td>{{$template->headerTextColor}}</td>
                                 <td>{{$template->backColor}}</td>
                                 <td>{{$template->primaryTextColor}}</td>
-                                                    <td class="form-inline"><a class="btn btn-info btn-sm" href="{{action('TemplateController@applyTemplate',['template'=>$template->id])}}"><i
-                                                                class="fa fa-eye" aria-hidden="true"></i> Apply Template</a>
-                                                        <span> </span>
+                                                    <td class="form-inline">
+                                                        {!! Form::open(array('action' => array('TemplateController@applyTemplate',$template->id),'method'=>'POST')) !!}
+
+                                                        {!! Form::submit('Apply Template', ['class' => 'btn btn-info btn-sm']) !!}
+
+                                                        {!! Form::close() !!}
                                                         <a class="btn btn-success btn-sm" href="{{action('TemplateController@edit',['template'=>$template->id])}}"><i
                                                                 class="fa fa-eye" aria-hidden="true"></i> Edit</a>
                                                         {!! Form::open(array('action' => array('TemplateController@destroy',$template->id),'method'=>'DELETE')) !!}

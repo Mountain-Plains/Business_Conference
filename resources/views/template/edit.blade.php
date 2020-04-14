@@ -48,7 +48,6 @@
                         {!! Form::color('primaryTextColor', $template->primaryTextColor, ['class' => 'form-group']) !!}
                     </div>
 
-
 {{--                    <div class="file-upload-wrapper">--}}
 {{--                        <div class="form-group">--}}
 {{--                            {!! Form::label('logo', 'Logo: ') !!}--}}

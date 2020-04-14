@@ -28,7 +28,12 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         view()->composer('layout.main',function ($view){
-           $view->with('template',Template::get()->last());
+           $view->with('template', Template::orderBy('applied_at', 'desc')->get()->first());
+        });
+
+        view()->composer('layout.nav',function ($view){
+            //dd(Template::orderBy('applied_at', 'desc')->get()->last());
+            $view->with('template',Template::orderBy('applied_at', 'desc')->get()->first());
         });
     }
 }

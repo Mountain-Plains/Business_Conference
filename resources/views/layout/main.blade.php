@@ -13,8 +13,9 @@
 
 </head>
 
-<body style="background-color:{{$template->backColor}};">
+<body style="background-color:{{$template->backColor}}; color:{{$template->primaryTextColor}};">
 @include('layout.nav')
+</br>
 @yield('content')
 
 </body>

@@ -47,7 +47,7 @@ Route::resources([
     'template' => 'TemplateController',
 ]);
 
-Route::post('/template/applyTemplate','TemplateController@applyTemplate');
+Route::post('/template/applyTemplate/{id}','TemplateController@applyTemplate');
 
 
 
