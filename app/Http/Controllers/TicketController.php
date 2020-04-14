@@ -13,6 +13,12 @@ class TicketController extends Controller
         return view('Ticket.index', $data);
     }
 
+    public function list()
+    {
+        $data['data']= DB::table('tickets')->get();
+        return view('admin.Ticket.list', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -68,7 +74,7 @@ class TicketController extends Controller
     public function edit($id)
     {
         $Ticket=Ticket::find($id);
-        return view('Ticket.Edit', compact('Ticket', 'id'));
+        return view('admin.Ticket.Edit', compact('Ticket', 'id'));
     }
 
     /**
@@ -88,7 +94,7 @@ class TicketController extends Controller
         $update_Ticket->URL=$request->get('URL');
         $update_Ticket->save();
 
-        return redirect()->action('TicketController@index')->with('message','Update ticket Successfully!');
+        return redirect()->action('TicketController@list')->with('message','Update ticket Successfully!');
     }
 
     /**

@@ -21,6 +21,11 @@ class SponsorController extends Controller
         $data['data']= DB::table('sponsors')->get();
         return view('Sponsor.index', $data);
     }
+    public function list()
+    {
+        $data['data']= DB::table('sponsors')->get();
+        return view('admin.Sponsor.list', $data);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +34,7 @@ class SponsorController extends Controller
      */
     public function create()
     {
-        return view('Sponsor.create');
+        return view('admin.Sponsor.create');
     }
 
     /**
@@ -56,7 +61,7 @@ class SponsorController extends Controller
 
       }
         $Sponsor->save();
-      return "Sucessful";
+        return redirect()->action('SponsorController@list')->with('message','Update Home page content Successfully!');
 
     }
 
@@ -80,7 +85,7 @@ class SponsorController extends Controller
     public function edit($id)
     {
         $sponsor=Sponsor::find($id);
-        return view('Sponsor.Edit', compact('sponsor', 'id'));
+        return view('admin.Sponsor.Edit', compact('sponsor', 'id'));
     }
 
     /**
@@ -112,7 +117,7 @@ class SponsorController extends Controller
 
 
         $update_Image->save();
-        return redirect()->action('SponsorController@index')->with('message','Update Sponsor Successfully!');
+        return redirect()->action('SponsorController@list')->with('message','Update Sponsor Successfully!');
     }
 
     /**
@@ -125,6 +130,6 @@ class SponsorController extends Controller
     {
         $delete= Sponsor::findorFail($id);
         $delete->delete();
-        return redirect()->action('SponsorController@index')->with('message','Deleted sponsor Successfully!');
+        return redirect()->action('SponsorController@list')->with('message','Deleted sponsor Successfully!');
     }
 }

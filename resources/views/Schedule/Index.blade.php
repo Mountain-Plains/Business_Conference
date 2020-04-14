@@ -53,8 +53,6 @@
                                                 </div>
 
                                             </div>
-                                            <a href="/schedule-edit/edit/{{$scheduledata->id}}">Edit</a>
-                                            <a href="/schedule/deleteItem/{{$scheduledata->id}}">Delete</a>
                                         </div>
 
                                     </div>
