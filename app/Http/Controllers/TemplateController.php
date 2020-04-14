@@ -21,7 +21,8 @@ class TemplateController extends Controller
     public function index()
     {
         $templates = Template::orderByRaw('ifnull(updated_at,created_at) desc')->paginate(8);
-        return view('template.index')->with(compact('templates'));
+        $current_template = Template::orderBy('applied_at', 'desc')->get()->first();
+        return view('template.index')->with(compact('templates','current_template'));
     }
 
     public function create()

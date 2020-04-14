@@ -31,6 +31,7 @@
                             <th>Header Text Color</th>
                             <th>Background Color</th>
                             <th>Primary Text Color</th>
+                            <th></th>
                         </tr>
                         @foreach($templates as $template)
                             <tr>
@@ -39,15 +40,24 @@
                                 <td>{{$template->headerColor}}</td>
                                 <td>{{$template->headerTextColor}}</td>
                                 <td>{{$template->backColor}}</td>
-                                <td>{{$template->primaryTextColor}}</td>
+                                <td>{{$template->primaryTextColor}}
+                                    @if($template == $current_template)
+                                        &nbsp; &#x2714;
+                                    @else
+
+                                    @endif</td>
+
+
                                                     <td class="form-inline">
                                                         {!! Form::open(array('action' => array('TemplateController@applyTemplate',$template->id),'method'=>'POST')) !!}
 
                                                         {!! Form::submit('Apply Template', ['class' => 'btn btn-info btn-sm']) !!}
 
                                                         {!! Form::close() !!}
+                                                        &nbsp;
                                                         <a class="btn btn-success btn-sm" href="{{action('TemplateController@edit',['template'=>$template->id])}}"><i
                                                                 class="fa fa-eye" aria-hidden="true"></i> Edit</a>
+                                                        &nbsp;
                                                         {!! Form::open(array('action' => array('TemplateController@destroy',$template->id),'method'=>'DELETE')) !!}
 
                                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
