@@ -21,7 +21,7 @@ class TemplateController extends Controller
     public function index()
     {
         $templates = Template::orderByRaw('ifnull(updated_at,created_at) desc')->paginate(8);
-        $current_template = Template::orderBy('applied_at', 'desc')->get()->first();
+        $current_template = Template::orderByRaw('ifnull(applied_at,created_at) desc')->first();
         return view('template.index')->with(compact('templates','current_template'));
     }
 
@@ -79,7 +79,7 @@ class TemplateController extends Controller
 
             $template->save();
 
-            return back()->action('TemplateController@index')->withErrors('Template Updated Successfully');
+            return redirect()->action('TemplateController@index')->withErrors('Template Updated Successfully');
         } catch (BadQueryStringException $exception) {
             return back()->withErrors($exception);
         }

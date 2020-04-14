@@ -18,7 +18,7 @@
                         @endforeach
                     @endif
                     <div>
-                        <a class="btn btn-info btn-sm"
+                        <a class="btn btn-success btn-sm"
                            href="{{action('TemplateController@create')}}">
                             <i class="fa fa-eye" aria-hidden="true"></i>+ Create New Template</a>
                     </div>
@@ -55,7 +55,7 @@
 
                                                         {!! Form::close() !!}
                                                         &nbsp;
-                                                        <a class="btn btn-success btn-sm" href="{{action('TemplateController@edit',['template'=>$template->id])}}"><i
+                                                        <a class="btn btn-warning btn-sm" href="{{action('TemplateController@edit',['template'=>$template->id])}}"><i
                                                                 class="fa fa-eye" aria-hidden="true"></i> Edit</a>
                                                         &nbsp;
                                                         {!! Form::open(array('action' => array('TemplateController@destroy',$template->id),'method'=>'DELETE')) !!}
