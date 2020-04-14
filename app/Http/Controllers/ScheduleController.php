@@ -20,8 +20,13 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $data['data']= DB::table('schedules')->groupBy('Day')->get();
+        $data['data']= DB::table('schedules')->get();
         return view('Schedule.index', $data);
+    }
+    public function list()
+    {
+        $data['data']= DB::table('schedules')->get();
+        return view('admin.Schedule.list', $data);
     }
 
     /**
@@ -31,7 +36,7 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        return view('Schedule.create');
+        return view('admin.Schedule.create');
     }
 
     /**
@@ -60,7 +65,7 @@ class ScheduleController extends Controller
         $newSchedule= array("Day"=>$schedule->Day,"EventDate"=>$schedule->EventDate, "EventStartTime"=>$schedule->EventStartTime,"EventEndTime"=>$schedule->EventEndTime,"description"=>$schedule->description);
         $created= DB::table('schedules')->insert($newSchedule);
         if ($created){
-            return "Sucessful";
+            return redirect()->action('ScheduleController@list')->with('message','Created schedule Successfully!');
         }
         else{
             return 'Not Sucessful';
@@ -88,7 +93,7 @@ class ScheduleController extends Controller
     public function edit($id)
     {
         $schedule=schedule::find($id);
-        return view('Schedule.Edit', compact('schedule', 'id'));
+        return view('admin.Schedule.Edit', compact('schedule', 'id'));
     }
 
     /**
@@ -115,7 +120,7 @@ class ScheduleController extends Controller
         $update_schedule->EventEndTime=$request->get('EventEndTime');
         $update_schedule->description=$request->get('description');
         $update_schedule->save();
-        return redirect()->action('ScheduleController@index')->with('message','Update schedule Successfully!');
+        return redirect()->action('ScheduleController@list')->with('message','Update schedule Successfully!');
 
     }
 
@@ -129,6 +134,6 @@ class ScheduleController extends Controller
     {
         $delete= schedule::findorFail($id);
         $delete->delete();
-        return redirect()->action('ScheduleController@index')->with('message','Deleted schedule Successfully!');
+        return redirect()->action('ScheduleController@list')->with('message','Deleted schedule Successfully!');
     }
 }
