@@ -14,7 +14,11 @@
                     <br>
                     @if($errors->any())
                         @foreach($errors->all() as $message)
+                            @if($message == "Cannot delete! Atleast one template is required in database.")
+                                <h5 class="alert alert-danger">{{$message}}</h5>
+                            @else
                                 <h5 class="alert alert-info">{{$message}}</h5>
+                            @endif
                         @endforeach
                     @endif
                     <div>
@@ -27,8 +31,8 @@
                         <tr>
                             <th>id</th>
                             <th>Template Name</th>
-                            <th>Header Color</th>
-                            <th>Header Text Color</th>
+                            <th>Navbar Color</th>
+                            <th>Navbar Text Color</th>
                             <th>Background Color</th>
                             <th>Primary Text Color</th>
                             <th></th>
@@ -36,16 +40,15 @@
                         @foreach($templates as $template)
                             <tr>
                                 <td>{{$template->id}}</td>
-                                <td>{{$template->name}}</td>
-                                <td>{{$template->headerColor}}</td>
-                                <td>{{$template->headerTextColor}}</td>
-                                <td>{{$template->backColor}}</td>
-                                <td>{{$template->primaryTextColor}}
-                                    @if($template == $current_template)
+                                <td>{{$template->name}}@if($template == $current_template)
                                         &nbsp; &#x2714;
                                     @else
 
                                     @endif</td>
+                                <td bgcolor="{{$template->headerColor}}"></td>
+                                <td bgcolor="{{$template->headerTextColor}}"></td>
+                                <td bgcolor="{{$template->backColor}}"></td>
+                                <td bgcolor="{{$template->primaryTextColor}}"></td>
 
 
                                                     <td class="form-inline">
@@ -67,6 +70,8 @@
                             </tr>
                         @endforeach
                     </table>
+{{--                    pagination --}}
+                    {{ $templates->links() }}
                 </div>
             </div>
         </div>
