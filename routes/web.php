@@ -38,3 +38,6 @@ Route::get('template/create','TemplateController@create');
 Route::get('/forgot_password','Auth\ForgotPasswordController@forgot');
 Route::post('/forgot_password','Auth\ForgotPasswordController@password');
 
+Route::get('/passwords/reset/{token}','Auth\ResetPasswordController@showResetForm');
+Route::post('passwords/reset','Auth\ResetPasswordController@reset');
+

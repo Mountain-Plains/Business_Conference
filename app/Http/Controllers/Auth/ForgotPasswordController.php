@@ -11,6 +11,7 @@ use function foo\func;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;;
 //use Reminder;
 use App\User;
+use Carbon\Carbon;
 
 class ForgotPasswordController extends Controller
 {
@@ -42,18 +43,28 @@ class ForgotPasswordController extends Controller
            return redirect()->back()->with(['error' => 'Email does not exist']);
        }
 
+        //create a new token to be sent to the user.
+        DB::table('password_resets')->insert([
+            'email' => $request->email,
+            'token' => str_random(60), //change 60 to any length you want
+            'created_at' => Carbon::now()
+        ]);
+
+        $tokenData = DB::table('password_resets')
+            ->where('email', $request->email)->first();
+
        $users = Sentinel::findById ($users -> id);
        //$reminder = Reminder::exists($users) ? : Reminder::create($users);
-       $this->sendEmail($users);
+       $this->sendEmail($users,$tokenData->token);
 
        return redirect()->back()->withErrors(['success' => 'Reset code sent to your email']);
 
     }
 
-    public function sendEmail($user){
+    public function sendEmail($user,$token){
         Mail::send(
-            'email.forgot',
-            ['user' => $user],
+            'auth.passwords.email',
+            ['user' => $user,'token'=>$token],
             function($message) use ($user){
                 $message -> to ($user -> email);
                 $message -> subject($user->first_name.", reset your password,");
