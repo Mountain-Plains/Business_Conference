@@ -1,70 +1,74 @@
-@extends('layout.main')
-@section('title')
-    Create Template
-@endsection
+@extends('layout.adminlayout.admin_design')
+@section('title','Create Template')
 @section('content')
-    <div class="container">
-        {{--@include('include.navbar')--}}
-        <br>
-        @if($errors->any())
-            @foreach($errors->all() as $message)
-                @if($message == 'Template Saved Successfully')
-                    <h5 class="alert alert-success">{{$message}}</h5>
-                @else
-                    <h5 class="alert alert-danger">{{$message}}</h5>
-                @endif
-            @endforeach
-        @endif
-        <h4>Create Template</h4>
-        {!! Form::open(array('action' => array('TemplateController@store'))) !!}
+    <div id="content">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    @if($errors->any())
+                        @foreach($errors->all() as $message)
+                            <div class="alert alert-danger text-center" role="alert">
+                                <h4>{{$message}}</h4>
+                            </div>
+                        @endforeach
+                    @endif
+                    <div class="widget-title"><span class="icon"> <i class="icon-info-sign"></i> </span>
+                        <h5>Create New Template</h5>
+                    </div>
+                    <div class="widget-content nopadding form-horizontal">
+                        {!! Form::open(array('action' => array('TemplateController@store'))) !!}
 
-         <div class="form-group">
-             {!! Form::label('name', 'Template Name') !!}
-             {!! Form::text('name', null, ['class' => 'form-control','placeholder'=>'My Template']) !!}
-         </div>
+                        <div class="control-group">
+                            <label class="control-label">Template Name:</label>
+                            <div class="controls">
+                                <input type="text" class="form-control-file" name="name" id="name"
+                                       placeholder="My Template">
+                                <span class="text-danger" style="color: red;"></span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Navbar Color:</label>
+                            <div class="controls">
+                                <input type="color" class="form-control-file" name="headerColor" id="headerColor"
+                                       value="#ffffff">
+                                <span class="text-danger" style="color: red;"></span>
+                            </div>
+                        </div>
 
-         <div class="form-group">
-             {!! Form::label('headerColor', 'Header Color (HEX Color Code)') !!}
-             {!! Form::text('headerColor', null, ['class' => 'form-control','placeholder'=>'#12ABFF']) !!}
-         </div>
+                        <div class="control-group">
+                            <label class="control-label">Navbar Text Color:</label>
+                            <div class="controls">
+                                <input type="color" class="form-control-file" name="headerTextColor"
+                                       id="headerTextColor" value="#000000">
+                                <span class="text-danger" style="color: red;"></span>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            {!! Form::label('headerTextColor', 'Header Text Color (HEX Color Code)') !!}
-            {!! Form::text('headerTextColor', null, ['class' => 'form-control','placeholder'=>'#12ABFF']) !!}
+                        <div class="control-group">
+                            <label class="control-label">Background Color:</label>
+                            <div class="controls">
+                                <input type="color" class="form-control-file" name="backColor" id="backColor"
+                                       value="#135790">
+                                <span class="text-danger" style="color: red;"></span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Primary Text Color:</label>
+                            <div class="controls">
+                                <input type="color" class="form-control-file" name="primaryTextColor"
+                                       id="primaryTextColor" value="#000000">
+                                <span class="text-danger" style="color: red;"></span>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            {!! Form::submit('Save', ['class' => 'btn btn-info']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="form-group">
-            {!! Form::label('footerColor', 'Footer Color (HEX Color Code)') !!}
-            {!! Form::text('footerColor', null, ['class' => 'form-control','placeholder'=>'#12ABFF']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('footerTextColor', 'Footer Text Color (HEX Color Code)') !!}
-            {!! Form::text('footerTextColor', null, ['class' => 'form-control','placeholder'=>'#12ABFF']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('backColor', 'Background Color (HEX Color Code)') !!}
-            {!! Form::text('backColor', null, ['class' => 'form-control','placeholder'=>'#12ABFF']) !!}
-        </div>
-
-        <div class="file-upload-wrapper">
-            {{--}}<input type="file" id="input-file-now" class="file-upload" />--}}
-
-        <div class="form-group">
-            {!! Form::label('logo', 'Logo') !!}
-            {!! Form::text('logo', null, ['class' => 'form-control','placeholder'=>'Image URL']) !!}
-        </div>
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('bgImage', 'Background Image ') !!}
-            {!! Form::text('bgImage', null, ['class' => 'form-control','placeholder'=>'Image URL']) !!}
-        </div>
-
-         {!! Form::submit('Save', ['class' => 'btn btn-info']) !!}
-
-         {!! Form::close() !!}
-
     </div>
 @endsection

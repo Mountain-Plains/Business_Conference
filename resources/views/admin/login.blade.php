@@ -1,9 +1,17 @@
-@extends('layout.main')
-@section('title')
-    Admin Login
-@endsection
-@section('content')
-    <div class="container bg-info">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mountain Plains  Admin</title><meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{asset('css/backend_css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/backend_css/bootstrap-responsive.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('css//backend_css/matrix-login.css')}}" />
+    <link href="{{asset('fonts/backend_fonts/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
         {{--@include('include.navbar')--}}
         <br>
 
@@ -35,7 +43,11 @@
         {!! Form::submit('Submit', ['class' => 'btn btn-secondary']) !!}
 
         {!! Form::close() !!}
-
-
     </div>
-@endsection
+
+
+    <script src="{{asset('JS/backend_js/jquery.min.js')}}"></script>
+    <script src="{{asset('JS/backend_js/matrix.login.js')}}"></script>
+</body>
+
+</html>
