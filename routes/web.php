@@ -41,3 +41,4 @@ Route::post('/forgot_password','Auth\ForgotPasswordController@password');
 Route::get('/passwords/reset/{token}','Auth\ResetPasswordController@showResetForm');
 Route::post('passwords/reset','Auth\ResetPasswordController@reset');
 
+

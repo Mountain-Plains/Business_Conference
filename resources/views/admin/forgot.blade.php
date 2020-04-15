@@ -15,13 +15,12 @@
 
     {{Form::open (array ('action' => 'Auth\ForgotPasswordController@password'))}}
 
-    {{ Form::hidden('email', $users[0]->email) }}
+    {{ Form::hidden('email', $users->first()->email) }}
 
     @foreach($users as $u)
         <tr>
             <td>{{$u->email}}</td>
         </tr>
-
     @endforeach
     </br>
 

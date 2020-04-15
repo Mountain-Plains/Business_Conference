@@ -16,6 +16,7 @@
         <h3>Reset Password</h3>
         {{Form::open (array ('action' => 'Auth\ResetPasswordController@reset'))}}
         {{csrf_field()}}
+{{--        {{dd($token,$email)}}--}}
 
         {{Form::hidden('token',$token)}}
         {{Form::hidden('email',$email)}}
