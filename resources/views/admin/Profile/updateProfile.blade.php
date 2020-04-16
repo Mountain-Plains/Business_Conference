@@ -17,7 +17,7 @@
                     </div>
                     <div class="widget-content nopadding form-horizontal">
                         {!! Form::open(array('action' => array('AdminController@update',$user->id),'method'=>'PUT')) !!}
-
+                        @csrf
                         <div class="control-group">
                             <label class="control-label">First Name:</label>
                             <div class="controls">

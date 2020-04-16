@@ -34,6 +34,8 @@
                             <td style="text-align: center; vertical-align: middle;">
                                 <a href="{{route('user.edit',$dt->id)}}"
                                    class="btn btn-primary btn-mini">Update User</a>
+                                <a href="{{route('user.delete',$dt->id)}}"
+                                   class="btn btn-primary btn-mini">Delete User</a>
                             </td>
                         </tr>
 

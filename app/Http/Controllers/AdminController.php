@@ -6,6 +6,7 @@ use App\Template;
 use Auth;
 use App\user;
 use App\Admin;
+use http\Exception\BadQueryStringException;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -61,22 +62,36 @@ class AdminController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'email' => 'required|email',
-            'first_name' => 'required|first_name',
-            'last_name' => 'required|last_name',
-        ]);
+        try {
+            $validated = $request->validate([
+                'email' => 'required',
 
+            ]);
 
-        $user = User::find($id);
-        $user->first_name = $request->input('first_name');
-        $user->last_name=$request->input('last_name');
-        $user->email=$request->input('email');
+            $user = User::find($id);
+            $user->fill($validated);
 
-        $user->save();
-        return redirect()->action('AdminController@getProfile')->with('message','Updated User Successfully!');
+            $user->update(Input::all());
+
+            return redirect()->action('AdminController@index')->withErrors('Template Updated Successfully');
+        } catch (BadQueryStringException $exception) {
+            return back()->withErrors($exception);
+        }
     }
 
+    public function deleteProfile($id)
+    {
+        $user = User::get();
+        if (count($user) <= 0) {
+            return redirect()->action('AdminController@getProfile')->withErrors('Cannot delete! Atleast one template is required in database.');
+        }
+        $user = User::find($id);
+        $user->delete();
+
+        $error_msg = "\"" . $user->name . "\" template deleted successfully.";
+
+        return redirect()->action('AdminController@getProfile')->withErrors($error_msg);
+    }
 
     public function dashboard()
     {
