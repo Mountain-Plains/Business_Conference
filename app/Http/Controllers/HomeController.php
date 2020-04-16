@@ -18,6 +18,14 @@ class HomeController extends Controller
 
         return view('Home.index', $data);
     }
+    public function list()
+    {
+        $data['data']= DB::table('homes')->get();
+
+        return view('admin.Home.List', $data);
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -80,7 +88,7 @@ class HomeController extends Controller
     public function edit($id)
     {
         $Home=Home::find($id);
-        return view('Home.Edit', compact('Home', 'id'));
+        return view('admin.Home.Edit', compact('Home', 'id'));
     }
 
     /**
@@ -104,7 +112,7 @@ class HomeController extends Controller
         $update_Home->Time=$request->get('Time');
         $update_Home->save();
 
-        return redirect()->action('HomeController@index')->with('message','Update pages Successfully!');
+        return redirect()->action('HomeController@list')->with('message','Update Home page content Successfully!');
 
     }
 

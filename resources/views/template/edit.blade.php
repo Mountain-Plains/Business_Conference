@@ -1,77 +1,72 @@
-@extends('layout.main')
-@section('title')
-    Create Template
-@endsection
+@extends('layout.adminlayout.admin_design')
+@section('title','Edit Template')
 @section('content')
-    <div class="uploadcenter">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="card">
-                    <div class="card-header"><h4>Edit Template</h4></div>
-
-                    {{--@include('include.navbar')--}}
-                    <br>
+    <div id="content">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
                     @if($errors->any())
                         @foreach($errors->all() as $message)
-                            @if($message == 'Template Updated Successfully')
-                                <h5 class="alert alert-success">{{$message}}</h5>
-                            @else
-                                <h5 class="alert alert-danger">{{$message}}</h5>
-                            @endif
+                            <div class="alert alert-danger text-center" role="alert">
+                                <h4>{{$message}}</h4>
+                            </div>
                         @endforeach
                     @endif
-
-                    {!! Form::open(array('action' => array('TemplateController@update',$template->id),'method'=>'PUT')) !!}
-
-                    <div class="form-group">
-                        {!! Form::label('name', 'Template Name:') !!}
-                        {!! Form::text('name', $template->name, ['class' => 'form-control','placeholder'=>'My Template']) !!}
+                    <div class="widget-title"><span class="icon"> <i class="icon-info-sign"></i> </span>
+                        <h5>Edit Template</h5>
                     </div>
+                    <div class="widget-content nopadding form-horizontal">
+                        {!! Form::open(array('action' => array('TemplateController@update',$template->id),'method'=>'PUT')) !!}
 
-                    <div class="form-group">
-                        {!! Form::label('headerColor', 'Header Color : ') !!}
-                        {!! Form::color('headerColor', $template->headerColor, ['class' => 'form-group']) !!}
+                        <div class="control-group">
+                            <label class="control-label">Template Name:</label>
+                            <div class="controls">
+                                <input type="text" class="form-control-file" name="name" id="name"
+                                       placeholder="My Template" value="{{$template->name}}">
+                                <span class="text-danger" style="color: red;"></span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Navbar Color:</label>
+                            <div class="controls">
+                                <input type="color" class="form-control-file" name="headerColor" id="headerColor"
+                                       value="{{$template->headerColor}}">
+                                <span class="text-danger" style="color: red;"></span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Navbar Text Color:</label>
+                            <div class="controls">
+                                <input type="color" class="form-control-file" name="headerTextColor"
+                                       id="headerTextColor" value="{{$template->headerTextColor}}">
+                                <span class="text-danger" style="color: red;"></span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Background Color:</label>
+                            <div class="controls">
+                                <input type="color" class="form-control-file" name="backColor" id="backColor"
+                                       value="{{$template->backColor}}">
+                                <span class="text-danger" style="color: red;"></span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Primary Text Color:</label>
+                            <div class="controls">
+                                <input type="color" class="form-control-file" name="primaryTextColor"
+                                       id="primaryTextColor" value="{{$template->primaryTextColor}}">
+                                <span class="text-danger" style="color: red;"></span>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            {!! Form::submit('Update Template', ['class' => 'btn btn-info']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::label('headerTextColor', 'Header Text Color: ') !!}
-                        {!! Form::color('headerTextColor', $template->headerTextColor, ['class' => 'form-group']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('backColor', 'Background Color:') !!}
-                        {!! Form::color('backColor', $template->backColor, ['class' => 'form-group']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('primaryTextColor', 'Primary Text Color: ') !!}
-                        {!! Form::color('primaryTextColor', $template->primaryTextColor, ['class' => 'form-group']) !!}
-                    </div>
-
-
-{{--                    <div class="file-upload-wrapper">--}}
-{{--                        <div class="form-group">--}}
-{{--                            {!! Form::label('logo', 'Logo: ') !!}--}}
-{{--                            <input type="file" class="form-control-file" name="logo" id="logo" aria-describedby="fileHelp">--}}
-{{--                            <small id="fileHelp" class="form-text text-muted">Please upload file formatted jpeg, png, jpg, gif, svg.</small>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                        <div class="form-group">--}}
-{{--                            {!! Form::label('logo', 'Logo') !!}--}}
-{{--                            {!! Form::text('logo', null, ['class' => 'form-control','placeholder'=>'Image URL']) !!}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{----}}
-{{--                    <div class="form-group">--}}
-{{--                        {!! Form::label('bgImage', 'Background Image ') !!}--}}
-{{--                        {!! Form::text('bgImage', null, ['class' => 'form-control','placeholder'=>'Image URL']) !!}--}}
-{{--                    </div>--}}
-
-                    {!! Form::submit('Update', ['class' => 'btn btn-info']) !!}
-
-                    {!! Form::close() !!}
-
                 </div>
             </div>
         </div>

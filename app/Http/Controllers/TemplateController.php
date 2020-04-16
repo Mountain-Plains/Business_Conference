@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\City;
 use App\Template;
+use Carbon\Carbon;
 use http\Exception\BadQueryStringException;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
@@ -19,8 +20,9 @@ class TemplateController extends Controller
 {
     public function index()
     {
-        $templates = Template::orderByRaw('ifnull(updated_at,created_at) desc')->paginate(10);
-        return view('template.index')->with(compact('templates'));
+        $templates = Template::orderByRaw('ifnull(updated_at,created_at) desc')->paginate(11);
+        $current_template = Template::orderByRaw('ifnull(applied_at,created_at) desc')->first();
+        return view('template.index')->with(compact('templates','current_template'));
     }
 
     public function create()
@@ -48,9 +50,9 @@ class TemplateController extends Controller
             $template->primaryTextColor = $request['primaryTextColor'];
 
             $template->save();
-            return back()->withErrors('Template Saved Successfully');
+            return redirect()->action('TemplateController@index')->withErrors('Template Saved Successfully');
         } catch (BadQueryStringException $exception) {
-            return back()->withErrors($exception);
+            return redirect()->withErrors($exception);
         }
     }
 
@@ -63,7 +65,7 @@ class TemplateController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $this->validate($request, [
+            $validated = $request->validate([
                 'name' => 'required',
                 'headerColor' => 'required',
                 'headerTextColor' => 'required',
@@ -72,15 +74,37 @@ class TemplateController extends Controller
             ]);
 
             $template = Template::find($id);
+            //dd($template);
+            $template->fill($validated);
+
             $template->save();
 
-            return back()->withErrors('Template Updated Successfully');
+            return redirect()->action('TemplateController@index')->withErrors('Template Updated Successfully');
         } catch (BadQueryStringException $exception) {
             return back()->withErrors($exception);
         }
     }
 
+    public function destroy($id){
+        $templates = Template::get();
+        if(count($templates)<=1){
+            return redirect()->action('TemplateController@index')->withErrors('Cannot delete! Atleast one template is required in database.');
+        }
+        $template = Template::find($id);
+        $template->delete();
+
+        $error_msg = "\"".$template->name."\" template deleted successfully.";
+
+        return redirect()->action('TemplateController@index')->withErrors($error_msg);
+    }
+
     public function applyTemplate($id){
-        
+        $template = Template::find($id);
+        $template->applied_at = Carbon::now();
+        $template->save();
+
+        $msg = "\"".$template->name."\" template applied.";
+
+        return redirect()->action('TemplateController@index')->withErrors($msg);
     }
 }

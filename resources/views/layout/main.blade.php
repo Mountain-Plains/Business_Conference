@@ -3,7 +3,7 @@
 <head>
     <title>@yield('title')</title>
 {{--    <link href="{{ asset('css/style.css') }}" rel="stylesheet">--}}
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/frontend_css/main.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
@@ -13,8 +13,9 @@
 
 </head>
 
-<body class="bg-info">
+<body style="background-color:{{$template->backColor}}; color:{{$template->primaryTextColor}};">
 @include('layout.nav')
+</br>
 @yield('content')
 
 </body>

@@ -12,7 +12,7 @@ use Illuminate\Routing\Controller as BaseController;
 class AdminController extends Controller
 {
     public function index(){
-        return view('admin.login');
+        return view('admin.admin_login');
     }
 
     public function logincheck(Request $request)
@@ -41,5 +41,10 @@ class AdminController extends Controller
     function  successlogin()
     {
     return view ('admin.successlogin');
+    }
+
+    public  function dashboard()
+    {
+     return view('admin.dashboard');
     }
 }

@@ -20,6 +20,7 @@ class CreateTemplatesTable extends Migration
             $table->string('headerTextColor');
             $table->string('backColor');
             $table->string('primaryTextColor');
+            $table->timestamp('applied_at')->nullable();
 //            $table->string('logo'); //logo filename
             $table->timestamps();
         });
