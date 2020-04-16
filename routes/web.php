@@ -13,7 +13,7 @@
 
 //login
 Route::get('login','AdminController@index');
-Route::post('logincheck','AdminController@logincheck');
+Route::post('logincheck','AdminController@loginCheck');
 
 Route::get('/', 'HomeController@index');
 Route::get("/front", function(){

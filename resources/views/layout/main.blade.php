@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{{asset('css/backend_css/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/backend_css/bootstrap-responsive.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css//backend_css/matrix-login.css')}}"/>
+    <link href="{{asset('fonts/backend_fonts/css/font-awesome.css')}}" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
     @include('include.css&js')
 
 </head>

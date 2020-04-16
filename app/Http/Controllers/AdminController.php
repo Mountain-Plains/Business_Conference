@@ -12,7 +12,7 @@ use Illuminate\Routing\Controller as BaseController;
 class AdminController extends Controller
 {
     public function index(){
-        return view('admin.login');
+        return view('admin.admin_login');
     }
 
     public function loginCheck(Request $request)
@@ -33,14 +33,14 @@ class AdminController extends Controller
         }
         else
         {
-            return back()->withErrors( 'Invalid Login Credentials!');
+            return redirect()->back()->withErrors( 'Invalid Login Credentials!');
         }
 
     }
 
     function  successLogin()
     {
-    return view ('admin.successlogin');
+    return view ('admin.dashboard');
     }
 
     public function resetpassword(){
