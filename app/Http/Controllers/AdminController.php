@@ -82,7 +82,7 @@ class AdminController extends Controller
     public function deleteProfile($id)
     {
         $user = User::get();
-        if (count($user) <= 0) {
+        if (count($user) <= 1) {
             return redirect()->action('AdminController@getProfile')->withErrors('Cannot delete! Atleast one template is required in database.');
         }
         $user = User::find($id);

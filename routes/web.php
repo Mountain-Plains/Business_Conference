@@ -60,11 +60,9 @@ Route::put('/sponsor-edit/update/{id}','SponsorController@update');
 Route::get('/admin/Paper/List', 'DownloadController@list');
 Route::get('/admin/Profile/Users', 'AdminController@getProfile');
 
-//Route::get('/admin/Profile/updateProfile/{id}','AdminController@updateProfile')->name('user.edit');
 Route::get('/admin/Profile/{id}/updateProfile','AdminController@updateProfile')->name('user.edit');
 Route::get('/admin/Profile/{id}/delete','AdminController@deleteProfile')->name('user.delete');
 
-Route::put('/admin/Profile/update/{id}', 'AdminController@update');
+Route::put('/admin/Profile/{id}', 'AdminController@update');
 
-//Route::post('/admin/Profile')
 
