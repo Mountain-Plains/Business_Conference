@@ -12,6 +12,7 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;;
 //use Reminder;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class ForgotPasswordController extends Controller
 {
@@ -46,7 +47,7 @@ class ForgotPasswordController extends Controller
         //create a new token to be sent to the user.
         DB::table('password_resets')->insert([
             'email' => $request->email,
-            'token' => str_random(60), //change 60 to any length you want
+            'token' => Str::random(60), //change 60 to any length you want
             'created_at' => Carbon::now()
         ]);
 

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Template;
@@ -16,12 +15,11 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         return view('admin.admin_login');
     }
 
-    public function logincheck(Request $request)
+    public function loginCheck(Request $request)
     {
         $this->validate($request, [
             'email' => 'required|email',
@@ -29,21 +27,24 @@ class AdminController extends Controller
         ]);
 
         $user_data = array(
-            'email' => $request->get('email'),
-            'password' => $request->get('password')
+            'email' => $request -> get('email'),
+            'password' => $request -> get('password')
         );
 
-        if (Auth::attempt($user_data)) {
-            return $this->successlogin();
-        } else {
-            return back()->withErrors('Invalid Login Credentials!');
+        if (Auth::attempt($user_data))
+        {
+            return $this->successLogin();
+        }
+        else
+        {
+            return redirect()->back()->withErrors( 'Invalid Login Credentials!');
         }
 
     }
 
-    function successlogin()
+    function  successLogin()
     {
-        return view('admin.successlogin');
+    return view ('admin.dashboard');
     }
 
     function getProfile()
@@ -93,8 +94,9 @@ class AdminController extends Controller
         return redirect()->action('AdminController@getProfile')->withErrors($error_msg);
     }
 
-    public function dashboard()
+    public  function dashboard()
     {
-        return view('admin.dashboard');
+     return view('admin.dashboard');
     }
+
 }

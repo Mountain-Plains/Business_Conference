@@ -1,57 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.main')
+@section('title')
+    Admin Login
+@endsection
+@section('content')
+    <div id="loginbox">
+        @if($errors->any())
+            @foreach($errors->all() as $message)
+                <h5 class="alert alert-danger">{{$message}}</h5>
+            @endforeach
+        @endif
 
-<head>
-    <title>Mountain Plains  Admin</title><meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{asset('css/backend_css/bootstrap.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/backend_css/bootstrap-responsive.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('css//backend_css/matrix-login.css')}}" />
-    <link href="{{asset('fonts/backend_fonts/css/font-awesome.css')}}" rel="stylesheet" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+        <h3>Admin Login</h3>
+        {{Form::open (array ('action' => 'AdminController@loginCheck'))}}
+        {{csrf_field()}}
 
-</head>
-<body>
-<div id="loginbox">
-    <form id="loginform" class="form-vertical" action="{{route('login')}}">
-        {{--<div class="control-group normal_text"> <h3><img src="img/logo.png" alt="Logo" /></h3></div>--}}
         <div class="control-group">
             <div class="controls">
                 <div class="main_input_box">
-                    <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="text" name="email" placeholder="Email" />
+                    <span class="add-on bg_lg"><i class="icon-user"> </i></span>
+                    {!! Form::email('email', null, ['class' => '','placeholder'=>'Enter your email address']) !!}
                 </div>
             </div>
         </div>
         <div class="control-group">
             <div class="controls">
                 <div class="main_input_box">
-                    <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" name="password" placeholder="Password" />
+                    <span class="add-on bg_ly"><i class="icon-lock"></i></span>
+                    {!! Form::password('password', ['class' => '','placeholder'=>'Admin Password Here']) !!}
                 </div>
             </div>
         </div>
         <div class="form-actions">
-            <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Lost password?</a></span>
-            <span class="pull-right"><a type="submit"  class="btn btn-success"> Login</a></span>
+            <span class="pull-left">
+                <a href="{{ action('Auth\ForgotPasswordController@forgot') }}"
+                   class="btn btn-info">Forgot Password?</a>
+            </span>
+            <span class="pull-right">
+                {!! Form::submit('Login', ['class' => 'btn btn-success']) !!}
+        </span>
         </div>
-    </form>
-    <form id="recoverform" action="#" class="form-vertical">
-        <p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
+        {!! Form::close() !!}
 
-        <div class="controls">
-            <div class="main_input_box">
-                <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" />
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Back to login</a></span>
-            <span class="pull-right"><a class="btn btn-info">Recover</a></span>
-        </div>
-    </form>
-</div>
-
-<script src="{{asset('JS/backend_js/jquery.min.js')}}"></script>
-<script src="{{asset('JS/backend_js/matrix.login.js')}}"></script>
-</body>
-
-</html>
+    </div>
+@endsection

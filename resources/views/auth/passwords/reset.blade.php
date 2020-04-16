@@ -3,7 +3,7 @@
     Reset Password
 @endsection
 @section('content')
-    <div class="container bg-info">
+    <div id="loginbox">
         {{--@include('include.navbar')--}}
         <br>
 
@@ -14,25 +14,36 @@
         @endif
 
         <h3>Reset Password</h3>
+        {{--        {{dd($token,$email)}}--}}
+
         {{Form::open (array ('action' => 'Auth\ResetPasswordController@reset'))}}
         {{csrf_field()}}
-{{--        {{dd($token,$email)}}--}}
 
+        <div class="control-group">
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_lg"><i class="icon-lock"> </i></span>
+                    {!! Form::password('password', ['class' => '','placeholder'=>'New Password Here']) !!}
+                </div>
+            </div>
+        </div>
         {{Form::hidden('token',$token)}}
         {{Form::hidden('email',$email)}}
-
-        <div class="form-group">
-            {!! Form::label('passwords', 'New Password') !!}
-            {!! Form::password('password', ['class' => 'form-control mx-sm-3','placeholder'=>'New Password Here']) !!}
+        <div class="control-group">
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_ly"><i class="icon-lock"></i></span>
+                    {!! Form::password('password_confirmation', ['class' => '','placeholder'=>'Confirm Password Here']) !!}
+                </div>
+            </div>
         </div>
-
-        <div class="form-group">
-            {!! Form::label('passwords', 'Confirm Password') !!}
-            {!! Form::password('password_confirmation', ['class' => 'form-control mx-sm-3','placeholder'=>'Confirm Password Here']) !!}
+        <div class="form-actions">
+                    <span class="">
+                {!! Form::submit('Reset Password', ['class' => 'btn btn-info']) !!}
+        </span>
         </div>
-
-        {!! Form::submit('Submit', ['class' => 'btn btn-secondary']) !!}
-
         {!! Form::close() !!}
+
+
     </div>
 @endsection
