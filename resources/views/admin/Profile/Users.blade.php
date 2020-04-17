@@ -4,7 +4,7 @@
     <div id="content">
         @if(Session::has('message'))
             <div class="alert alert-success text-center" role="alert">
-                <strong>Well done!</strong> {{Session::get('message')}}
+                <strong> {{Session::get('message')}}</strong>
             </div>
         @endif
         <div class="widget-box">
@@ -35,7 +35,7 @@
                                 <a href="{{route('user.edit',$dt->id)}}"
                                    class="btn btn-primary btn-mini">Update User</a>
                                 <a href="{{route('user.delete',$dt->id)}}"
-                                   class="btn btn-primary btn-mini" onclick="return confirm('Are you sure?')")>Delete User</a>
+                                   class="btn btn-danger btn-mini" onclick="return confirm('Are you sure?')")>Delete User</a>
                             </td>
                         </tr>
 

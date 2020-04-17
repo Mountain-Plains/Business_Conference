@@ -10,10 +10,9 @@
             @endforeach
         @endif
 
-        <h3>Admin Login</h3>
         {{Form::open (array ('action' => 'AdminController@loginCheck'))}}
         {{csrf_field()}}
-
+            <h3>Admin Login</h3>
         <div class="control-group">
             <div class="controls">
                 <div class="main_input_box">
@@ -33,10 +32,10 @@
         <div class="form-actions">
             <span class="pull-left">
                 <a href="{{ action('Auth\ForgotPasswordController@forgot') }}"
-                   class="btn btn-info">Forgot Password?</a>
+                   class="btn btn-info btn-sm">Forgot Password?</a>
             </span>
             <span class="pull-right">
-                {!! Form::submit('Login', ['class' => 'btn btn-success']) !!}
+                {!! Form::submit('Login', ['class' => 'btn btn-sm btn-success']) !!}
         </span>
         </div>
         {!! Form::close() !!}

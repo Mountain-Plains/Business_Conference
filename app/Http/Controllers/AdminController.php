@@ -96,15 +96,16 @@ class AdminController extends Controller
         try {
             $validated = $request->validate([
                 'email' => 'required',
-
+                'first_name'=>'required',
+                'last_name'=>'required'
             ]);
 
             $user = User::find($id);
             $user->fill($validated);
 
-            $user->update(Input::all());
+            $user->save();
 
-            return redirect()->action('AdminController@index')->withErrors('Template Updated Successfully');
+            return redirect()->action('AdminController@getProfile')->with('message','User Updated Successfully');
         } catch (BadQueryStringException $exception) {
             return back()->withErrors($exception);
         }
