@@ -18,6 +18,13 @@ Route::get("/front", function(){
     return view('front');
 });
 
+
+Route::resource('login','AdminController');
+
+Route::post('submissions', 'paperViewController@reviewUpdatePost')->name('paper.update.post');
+Route::post('deletions', 'paperViewController@deleteSubmissionPost')->name('paper.delete.post');
+Route::get('/Paper/{file}', 'DownloadController@download');
+
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
 Route::get('/admin/home-create', 'HomeController@create')->name('home.create');
