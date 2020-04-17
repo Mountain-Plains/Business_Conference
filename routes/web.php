@@ -23,7 +23,7 @@ Route::resource('login','AdminController');
 
 Route::post('submissions', 'paperViewController@reviewUpdatePost')->name('paper.update.post');
 Route::post('deletions', 'paperViewController@deleteSubmissionPost')->name('paper.delete.post');
-Route::get('/Paper/{file}', 'DownloadController@download');
+Route::get('/Paper/{file}', 'DownloadController@download')->name('Download.paper');
 
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
