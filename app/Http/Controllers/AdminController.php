@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Template;
@@ -15,7 +16,8 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('admin.admin_login');
     }
 
@@ -27,24 +29,21 @@ class AdminController extends Controller
         ]);
 
         $user_data = array(
-            'email' => $request -> get('email'),
-            'password' => $request -> get('password')
+            'email' => $request->get('email'),
+            'password' => $request->get('password')
         );
 
-        if (Auth::attempt($user_data))
-        {
+        if (Auth::attempt($user_data)) {
             return $this->successLogin();
-        }
-        else
-        {
-            return redirect()->back()->withErrors( 'Invalid Login Credentials!');
+        } else {
+            return redirect()->back()->withErrors('Invalid Login Credentials!');
         }
 
     }
 
-    function  successLogin()
+    function successLogin()
     {
-    return view ('admin.dashboard');
+        return view('admin.dashboard');
     }
 
     function getProfile()
@@ -53,6 +52,37 @@ class AdminController extends Controller
 
         return view('admin.Profile.Users', $data);
     }
+
+    public function addUser()
+    {
+        return view('admin.Profile.addNewUser');
+    }
+    public function createUser(Request $request)
+    {
+        try {
+            $this->validate($request, [
+                'name' => 'required',
+                'headerColor' => 'required',
+                'headerTextColor' => 'required',
+                'backColor' => 'required',
+                'primaryTextColor' => 'required',
+            ]);
+
+            $template = new Template;
+
+            $template->name = $request['name'];
+            $template->headerColor = $request['headerColor'];
+            $template->headerTextColor = $request['headerTextColor'];
+            $template->backColor = $request['backColor'];
+            $template->primaryTextColor = $request['primaryTextColor'];
+
+            $template->save();
+            return redirect()->action('TemplateController@index')->withErrors('Template Saved Successfully');
+        } catch (BadQueryStringException $exception) {
+            return redirect()->withErrors($exception);
+        }
+    }
+
 
     public function updateProfile($id)
     {
@@ -94,9 +124,9 @@ class AdminController extends Controller
         return redirect()->action('AdminController@getProfile')->withErrors($error_msg);
     }
 
-    public  function dashboard()
+    public function dashboard()
     {
-     return view('admin.dashboard');
+        return view('admin.dashboard');
     }
 
 }
