@@ -20,6 +20,9 @@ Route::get("/front", function(){
     return view('front');
 });
 
+Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
+Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
+
 Route::get('schedule', 'ScheduleController@index')->name('Schedule.index');
 Route::get('/Ticket', 'TicketController@index');
 Route::get('/Sponsor', 'SponsorController@index');
@@ -53,12 +56,7 @@ Route::group(['middleware'=>['auth','admin']], function (){
     Route::get('/admin/Paper/List', 'DownloadController@list');
 
     Route::get('/papers/{file}', 'DownloadController@download');
-
-    Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
-    Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
-
-    Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
-    Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
+    
     Route::get('home-create', 'HomeController@create')->name('home.create');
     Route::post('home-create', 'HomeController@store')->name('home.create.post');
 
