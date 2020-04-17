@@ -12,12 +12,11 @@
                 <h5 class="alert alert-danger">{{$message}}</h5>
             @endforeach
         @endif
-
-        <h3>Reset Password</h3>
         {{--        {{dd($token,$email)}}--}}
 
         {{Form::open (array ('action' => 'Auth\ResetPasswordController@reset'))}}
         {{csrf_field()}}
+        <h3>Reset Password</h3>
 
         <div class="control-group">
             <div class="controls">

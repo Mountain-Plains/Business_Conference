@@ -29,11 +29,11 @@
 
         <div class="form-actions">
             <span class="pull-left">
-                <a href="{{ action('AdminController@index') }}" class="flip-link btn btn-info" id="to-login">&laquo; Back to login</a>
+                <a href="{{ action('AdminController@index') }}" class="flip-link btn btn-info btn-sm" id="to-login">&laquo; Back to login</a>
             </span>
             &nbsp;
             <span >
-                 {!! Form::submit('Send Recovery Email', ['class' => 'btn btn-success']) !!}
+                 {!! Form::submit('Send Recovery Email', ['class' => 'btn btn-success btn-sm']) !!}
             </span>
         </div>
         {!! Form::close() !!}

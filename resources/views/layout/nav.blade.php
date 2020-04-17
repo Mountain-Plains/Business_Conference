@@ -14,6 +14,7 @@
                 <li><a href="/file-upload" style="color:{{$template->headerTextColor}};">Paper Submission</a></li>
                 <li><a href="/Ticket" style="color:{{$template->headerTextColor}};">Ticket</a></li>
                 <li><a href="/Sponsor" style="color:{{$template->headerTextColor}};">Sponsor</a></li>
+                <li><a href="/dashboard" style="color:{{$template->headerTextColor}};">Admin</a></li>
 
             </ul>
         </nav><!-- .nav-menu -->
