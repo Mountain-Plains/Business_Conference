@@ -20,7 +20,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $data['data']= DB::table('schedules')->get();
+        $data['data']= schedule::orderBy('EventDate', 'ASC')->get();
         return view('Schedule.index', $data);
     }
     public function list()

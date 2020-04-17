@@ -34,7 +34,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('Home.create');
+        return view('admin.Home.Create');
     }
 
     /**
@@ -60,7 +60,7 @@ class HomeController extends Controller
         $newHome= array("description"=>$Home->description, "Location"=>$Home->Location,"Time"=>$Home->Time);
         $created= DB::table('homes')->insert($newHome);
         if ($created){
-            return "Sucessful";
+            return redirect()->action('HomeController@list')->with('message','Created Home page content Successfully!');
         }
         else{
             return 'Not Sucessful';

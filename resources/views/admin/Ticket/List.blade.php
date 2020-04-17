@@ -12,6 +12,9 @@
                 <h5>List Ticket</h5>
             </div>
             <div class="widget-content nopadding">
+                @if($data->count()==0)
+                    <a href="{{route('Ticket.create')}}" class="btn btn-primary btn-mini">Create Ticket</a>
+                @endif
                 <table class="table table-bordered data-table">
                     <thead>
                     <tr>

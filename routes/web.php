@@ -20,13 +20,13 @@ Route::get("/front", function(){
 
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
-Route::get('home-create', 'HomeController@create')->name('home.create');
-Route::post('home-create', 'HomeController@store')->name('home.create.post');
+Route::get('/admin/home-create', 'HomeController@create')->name('home.create');
+Route::post('/admin/home-create', 'HomeController@store')->name('home.create.post');
 Route::get('schedule', 'ScheduleController@index')->name('Schedule.index');
 Route::get('/schedule/deleteItem/{id}','ScheduleController@destroy');
 Route::get('/Ticket', 'TicketController@index');
-Route::get('Ticket-create', 'TicketController@create')->name('Ticket.create');
-Route::post('Ticket-create', 'TicketController@store')->name('Ticket.create.post');
+Route::get('/admin/Ticket-create', 'TicketController@create')->name('Ticket.create');
+Route::post('/admin/Ticket-create', 'TicketController@store')->name('Ticket.create.post');
 Route::get('/Sponsor', 'SponsorController@index');
 Route::get('sponsor-create', 'SponsorController@create')->name('Sponsor.create');
 Route::post('sponsor-upload', 'SponsorController@store')->name('Sponsor.create.post');
