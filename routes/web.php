@@ -62,6 +62,8 @@ Route::post('/forgot_password', 'Auth\ForgotPasswordController@password');
 Route::get('/passwords/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 Route::post('passwords/reset', 'Auth\ResetPasswordController@reset');;
 
+
+Route::get('/admin/profile','AdminController@getProfile');
 Route::get('/admin/Profile/{id}/updateProfile', 'AdminController@updateProfile')->name('user.edit');
 Route::get('/admin/Profile/{id}/delete', 'AdminController@deleteProfile')->name('user.delete');
 

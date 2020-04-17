@@ -44,7 +44,7 @@
         </li>
         <li class="submenu "> <a href="#"><i class="icon icon-th-list"></i> <span>Users</span></a>
             <ul>
-                <li><a href="/admin/Profile/Users">All Users</a></li>
+                <li><a href="/admin/profile">All Users</a></li>
             </ul>
     </ul>
 </div>

@@ -4,7 +4,7 @@
     <div id="content">
         @if(Session::has('message'))
             <div class="alert alert-success text-center" role="alert">
-                <strong>Well done!</strong> {{Session::get('message')}}
+                <strong> {{Session::get('message')}}</strong>
             </div>
         @endif
         <div class="widget-box">
