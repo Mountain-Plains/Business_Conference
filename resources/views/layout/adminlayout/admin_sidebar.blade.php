@@ -36,6 +36,12 @@
                 <li><a href="/admin/Paper/List"> Paper Submitted</a></li>
             </ul>
         </li>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Template</span></a>
+            <ul>
+                <li><a href="{{route('template.index')}}">List Templates</a></li>
+                <li><a href="{{route('template.create')}}">Create New Template</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 <!--sidebar-menu-->

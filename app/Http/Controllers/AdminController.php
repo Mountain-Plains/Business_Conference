@@ -15,7 +15,7 @@ class AdminController extends Controller
         return view('admin.admin_login');
     }
 
-    public function logincheck(Request $request)
+    public function loginCheck(Request $request)
     {
         $this->validate($request, [
             'email' => 'required|email',
@@ -29,22 +29,27 @@ class AdminController extends Controller
 
         if (Auth::attempt($user_data))
         {
-            return $this->successlogin();
+            return $this->successLogin();
         }
         else
         {
-            return back()->withErrors( 'Invalid Login Credentials!');
+            return redirect()->back()->withErrors( 'Invalid Login Credentials!');
         }
 
     }
 
-    function  successlogin()
+    function  successLogin()
     {
-    return view ('admin.successlogin');
+    return view ('admin.dashboard');
+    }
+
+    public function resetpassword(){
+        return view('admin.resetpassword');
     }
 
     public  function dashboard()
     {
      return view('admin.dashboard');
     }
+
 }

@@ -11,7 +11,9 @@
 |
 */
 
-
+//login
+Route::get('login','AdminController@index');
+Route::post('logincheck','AdminController@loginCheck');
 
 Route::get('/', 'HomeController@index');
 Route::get("/front", function(){
@@ -24,6 +26,12 @@ Route::resource('login','AdminController');
 Route::post('submissions', 'paperViewController@reviewUpdatePost')->name('paper.update.post');
 Route::post('deletions', 'paperViewController@deleteSubmissionPost')->name('paper.delete.post');
 Route::get('/Paper/{file}', 'DownloadController@download')->name('Download.paper');
+
+Route::get('/papers/{file}', 'DownloadController@download');
+
+Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
+Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
+
 
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
@@ -39,16 +47,9 @@ Route::get('sponsor-create', 'SponsorController@create')->name('Sponsor.create')
 Route::post('sponsor-upload', 'SponsorController@store')->name('Sponsor.create.post');
 Route::get('/sponsor/deleteItem/{id}','SponsorController@destroy');
 
-
-//admin panel
-Route::get('admin','AdminController@index');
-Route::post('logincheck','AdminController@logincheck')->name('login');
-
-
 //Template
-Route::resources([
-    'template' => 'TemplateController',
-]);
+Route::resources(['template' => 'TemplateController',]);
+Route::post('/template/applyTemplate/{id}','TemplateController@applyTemplate');
 
 Route::get('/admin/dashboard', 'AdminController@dashboard');
 Route::get('/admin/Home/List', 'HomeController@list');
@@ -66,3 +67,11 @@ Route::get('/admin/sponsor/List', 'SponsorController@list');
 Route::get('/sponsor-edit/edit/{id}','SponsorController@edit')->name('sponsor.edit');
 Route::put('/sponsor-edit/update/{id}','SponsorController@update');
 Route::get('/admin/Paper/List', 'DownloadController@list');
+
+Route::get('/forgot_password','Auth\ForgotPasswordController@forgot');
+Route::post('/forgot_password','Auth\ForgotPasswordController@password');
+
+Route::get('/passwords/reset/{token}','Auth\ResetPasswordController@showResetForm');
+Route::post('passwords/reset','Auth\ResetPasswordController@reset');
+
+
