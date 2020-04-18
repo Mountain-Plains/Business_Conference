@@ -56,7 +56,7 @@ Route::group(['middleware'=>['auth','admin']], function (){
     Route::get('/admin/Paper/List', 'DownloadController@list');
 
     Route::get('/papers/{file}', 'DownloadController@download');
-    
+
     Route::get('home-create', 'HomeController@create')->name('home.create');
     Route::post('home-create', 'HomeController@store')->name('home.create.post');
 
