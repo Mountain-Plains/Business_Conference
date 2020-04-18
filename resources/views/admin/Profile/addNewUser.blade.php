@@ -16,12 +16,12 @@
                         <h5>Create New User</h5>
                     </div>
                     <div class="widget-content nopadding form-horizontal">
-                        {!! Form::open(array('action' => array('AdminController@addUser'))) !!}
+                        {!! Form::open(array('action' => array('AdminController@addNewUser'))) !!}
 
                         <div class="control-group">
                             <label class="control-label">First Name:</label>
                             <div class="controls">
-                                <input type="text" class="form-control-file" name="name" id="name"
+                                <input type="text" class="form-control-file" name="first_name" id="name"
                                        placeholder="First Name">
                                 <span class="text-danger" style="color: red;"></span>
                             </div>
@@ -30,7 +30,7 @@
                         <div class="control-group">
                             <label class="control-label">Last Name:</label>
                             <div class="controls">
-                                <input type="text" class="form-control-file" name="name" id="name"
+                                <input type="text" class="form-control-file" name="last_name" id="name"
                                        placeholder="Last Name">
                                 <span class="text-danger" style="color: red;"></span>
                             </div>
@@ -39,7 +39,7 @@
                         <div class="control-group">
                             <label class="control-label">Email:</label>
                             <div class="controls">
-                                <input type="text" class="form-control-file" name="name" id="name"
+                                <input type="text" class="form-control-file" name="email" id="name"
                                        placeholder="some@gmail.com">
                                 <span class="text-danger" style="color: red;"></span>
                             </div>

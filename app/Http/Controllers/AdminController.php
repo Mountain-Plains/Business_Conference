@@ -13,6 +13,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -57,38 +58,34 @@ class AdminController extends Controller
     {
         return view('admin.Profile.addNewUser');
     }
-    public function createUser(Request $request)
+
+    public function addNewUser(Request $request)
     {
         try {
             $this->validate($request, [
-                'name' => 'required',
-                'headerColor' => 'required',
-                'headerTextColor' => 'required',
-                'backColor' => 'required',
-                'primaryTextColor' => 'required',
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'password' => 'required',
+                'email' => 'required',
             ]);
 
-            $template = new Template;
+            $user = new User;
 
-            $template->name = $request['name'];
-            $template->headerColor = $request['headerColor'];
-            $template->headerTextColor = $request['headerTextColor'];
-            $template->backColor = $request['backColor'];
-            $template->primaryTextColor = $request['primaryTextColor'];
-
-            $template->save();
-            return redirect()->action('TemplateController@index')->withErrors('Template Saved Successfully');
+            $user->first_name = $request['first_name'];
+            $user->last_name = $request['last_name'];
+            $user->email = $request['email'];
+            $user->password = $request['password'];
+            $user->save();
+            return redirect()->action('AdminController@getProfile')->withErrors('Template Saved Successfully');
         } catch (BadQueryStringException $exception) {
             return redirect()->withErrors($exception);
         }
     }
 
-
     public function updateProfile($id)
     {
         $user = User::find($id);
         return view('admin.Profile.updateProfile', compact('user', 'id'));
-//        return view('admin.Profile.updateProfile')->with('user', $user);
     }
 
     public function update(Request $request, $id)
@@ -96,8 +93,8 @@ class AdminController extends Controller
         try {
             $validated = $request->validate([
                 'email' => 'required',
-                'first_name'=>'required',
-                'last_name'=>'required'
+                'first_name' => 'required',
+                'last_name' => 'required'
             ]);
 
             $user = User::find($id);
@@ -105,7 +102,7 @@ class AdminController extends Controller
 
             $user->save();
 
-            return redirect()->action('AdminController@getProfile')->with('message','User Updated Successfully');
+            return redirect()->action('AdminController@getProfile')->with('message', 'User Updated Successfully');
         } catch (BadQueryStringException $exception) {
             return back()->withErrors($exception);
         }
