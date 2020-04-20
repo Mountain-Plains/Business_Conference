@@ -47,7 +47,7 @@
                         <div class="control-group">
                             <label class="control-label">Password</label>
                             <div class="controls">
-                                <input type="password" class="form-control-file" name="name" id="name">
+                                <input type="password" class="form-control-file" name="password" id="name">
                                 <span class="text-danger" style="color: red;"></span>
                             </div>
                         </div>

@@ -46,7 +46,7 @@
 
 
                         <div class="controls">
-                            {!! Form::submit('Update Template', ['class' => 'btn btn-info']) !!}
+                            {!! Form::submit('Update User', ['class' => 'btn btn-info']) !!}
                         </div>
 
                         {!! Form::close() !!}

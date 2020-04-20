@@ -63,10 +63,10 @@ class AdminController extends Controller
     {
         try {
             $this->validate($request, [
+                'email' => 'required|unique:users,email',
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'password' => 'required',
-                'email' => 'required',
             ]);
 
             $user = new User;
@@ -92,7 +92,7 @@ class AdminController extends Controller
     {
         try {
             $validated = $request->validate([
-                'email' => 'required',
+                'email' => 'required|unique:users,email',
                 'first_name' => 'required',
                 'last_name' => 'required'
             ]);
