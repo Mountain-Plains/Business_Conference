@@ -62,15 +62,10 @@
                                 <small id="fileHelp" class="form-text text-muted">Please upload a valid file.</small>
                             </div>
 
+                          <p>  <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div></p>
 
-                            <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}">
-                                @if($errors->has('g-recaptcha-response'))
-                                    <span class="invalid-feedback" style="display: block">
-                                    <strong>{{$errors->first('g-recaptcha-response')}}</strong>
-                                </span>
-                                @endif
-                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
+
                         </form>
 
                     </div>

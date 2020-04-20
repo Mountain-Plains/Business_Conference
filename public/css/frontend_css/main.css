@@ -2322,10 +2322,16 @@ section {
 iframe {
     margin: auto;
     width: 80%;
-    border: 3px solid #73AD21;
     padding: 10px;
     display: block;
     height:1800px;
     /*margin-top: -24px;*/
+
+}
+
+.g-recaptcha{
+
+   transform:scale(0.77);
+    -webkit-transform:scale(0.77);
 
 }
