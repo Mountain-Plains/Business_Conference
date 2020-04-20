@@ -42,7 +42,7 @@ class SubmissionController extends Controller
         $newsubmission= array("title"=>$Submission->title, "first_name"=>$Submission->first_name, "last_name"=> $Submission->last_name,"isReviewed"=>$Submission->isReviewed, "paper"=>$fileName);
         $created= DB::table('submissions')->insert($newsubmission);
         if($created){
-            return "Sucessful";
+            return redirect()->action('SubmissionController@fileUpload')->with('message','Paper Submitted Successfully!');
         }else{
             return "Not Sucessful";
         }

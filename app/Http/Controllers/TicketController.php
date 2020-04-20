@@ -26,7 +26,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('Ticket.create');
+        return view('admin.Ticket.Create');
     }
 
     /**
@@ -45,7 +45,7 @@ class TicketController extends Controller
         $newticket= array("URL"=>$Ticket->URL);
         $created= DB::table('tickets')->insert($newticket);
         if ($created){
-            return "Sucessful";
+            return redirect()->action('TicketController@list')->with('message','Ticket created Successfully!');
         }
         else{
             return 'Not Sucessful';

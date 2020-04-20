@@ -9,9 +9,14 @@
         @endif
         <div class="widget-box">
             <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-                <h5>List Home Contets</h5>
+                <h5>List Home Content</h5>
+
             </div>
             <div class="widget-content nopadding">
+               @if($data->count()==0)
+                    <a href="{{route('home.create')}}" class="btn btn-primary btn-mini">Create Home Content</a>
+                @endif
+
                 <table class="table table-bordered data-table">
                     <thead>
                     <tr>
@@ -23,7 +28,7 @@
                     </thead>
                     <tbody>
                     @foreach($data as $dt)
-
+                       {{--$count= $dt->count()--}}
                         <tr class="gradeC">
                             <td style="vertical-align: middle;">{!! $dt->description !!}</td>
                             <td style="vertical-align: middle;">{{$dt->Location}}</td>
@@ -41,6 +46,8 @@
                             </div>
 
                         </div>
+
+
                         {{--Pop Up Model for View Product--}}
                     @endforeach
                     </tbody>

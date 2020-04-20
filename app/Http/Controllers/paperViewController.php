@@ -18,4 +18,10 @@ class paperViewController extends Controller
 		return view('submissions');
 	}
 
+	public function deleteSubmissionPost(Request $request)
+	{
+		Submission::destroy($request['id']);
+		//return view('submissions');
+		return redirect('submissions')->with('status' , 'your message has been saved');
+	}
 }

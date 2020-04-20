@@ -23,7 +23,6 @@
                             <div class="tab-content">
                                 @foreach($data as $scheduledata)
                                 <div id="day1" class="tab-pane active">
-                                    <h4>{{$scheduledata->Day}}</h4>
                                     <div class="schedule-card">
 
                                         <div class="row no-gutters">
@@ -32,7 +31,8 @@
 
                                                 <div class="card-identity">
 
-                                                    <h3>{{$scheduledata->EventStartTime}}</h3>
+                                                    <h3> {{$scheduledata->EventDate}}</h3>
+
 
                                                     <p></p>
 
@@ -40,12 +40,14 @@
 
                                             </div>
 
+
                                             <div class="col-md-9 align-self-center">
 
                                                 <div class="schedule-content">
 
-                                                    <p class="schedule-date"></p>
 
+                                                    <p class="schedule-date"></p>
+                                                    <p>{{$scheduledata->EventStartTime}}</p>
                                                     <h3>{{$scheduledata->description}}</h3>
 
                                                     <p></p>
