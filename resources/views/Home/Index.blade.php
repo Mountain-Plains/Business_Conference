@@ -8,6 +8,11 @@
         {{--<h6>{!! $datas->body !!}</h6>--}}
         {{--<a href="/home-edit/edit/{{$datas->id}}">Edit</a>--}}
     {{--@endforeach--}}
+    @if($errors->any())
+        @foreach($errors->all() as $message)
+            <h5 class="alert alert-info">{{$message}}</h5>
+        @endforeach
+    @endif
 
     @foreach($data as $datas)
 
