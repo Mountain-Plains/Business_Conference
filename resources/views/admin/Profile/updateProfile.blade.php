@@ -30,7 +30,7 @@
                         <div class="control-group">
                             <label class="control-label">Last Name:</label>
                             <div class="controls">
-                                <input type="text" class="form-control-file" name="last_name" id="name"
+                                <input type="text" class="form-control-file" name="last_name" id=""
                                        placeholder="My Template" value="{{$user->last_name}}" required>
                                 <span class="text-danger" style="color: red;"></span>
                             </div>
@@ -38,7 +38,7 @@
                         <div class="control-group">
                             <label class="control-label">Email</label>
                             <div class="controls">
-                                <input type="email" class="form-control-file" name="email" id="name"
+                                <input type="email" class="form-control-file" name="email" id=""
                                        placeholder="My Template" value="{{$user->email}}" required>
                                 <span class="text-danger" style="color: red;"></span>
                             </div>
