@@ -14,7 +14,7 @@ class SubmissionController extends Controller
 {
     public function fileUpload()
     {
-        return view('Upload');
+        return view('Submission.Upload');
     }
 
 
@@ -33,15 +33,6 @@ class SubmissionController extends Controller
         $Submission->last_name= $request['lastName'];
         $Submission->isReviewed= $request['isReviewed'];
 
-
-//      $fileName= time().'.'.$request->paper->extension();
-//        $old_path = $request->file('paper')->getPathName();
-////        Storage::disk('local')->put($old_path, url('/storage/Paper'),$fileName);
-//        Storage::disk('local')->put($old_path,'/Paper', $fileName);
-
-
-//        $title= $request->input('title');
-//        Validator::make($request->all(),['file'=>"required|string|paper|mimes:pdf,docx"])->validate();
         $extension= $request->file("paper")->getClientOriginalExtension();
         $stringPaperFormat=str_replace(" ", "", $request->input('title'));
 
@@ -51,7 +42,7 @@ class SubmissionController extends Controller
         $newsubmission= array("title"=>$Submission->title, "first_name"=>$Submission->first_name, "last_name"=> $Submission->last_name,"isReviewed"=>$Submission->isReviewed, "paper"=>$fileName);
         $created= DB::table('submissions')->insert($newsubmission);
         if($created){
-            return "Sucessful";
+            return redirect()->action('SubmissionController@fileUpload')->with('message','Paper Submitted Successfully!');
         }else{
             return "Not Sucessful";
         }

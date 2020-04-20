@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Template extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
 
     protected $table = 'templates';
-//    protected $fillable =['name'];
+    protected $fillable =['name','headerColor','headerTextColor','backColor','primaryTextColor'];
 }

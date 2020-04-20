@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use App\Template;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
-    /**
+    /**s
      * Bootstrap any application services.
      *
      * @return void
@@ -25,5 +26,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        view()->composer('layout.main',function ($view){
+           $view->with('template', Template::orderByRaw('ifnull(applied_at,created_at) desc')->first());
+        });
+
+        view()->composer('layout.nav',function ($view){
+            $view->with('template',Template::orderByRaw('ifnull(applied_at,created_at) desc')->first());
+        });
     }
 }
