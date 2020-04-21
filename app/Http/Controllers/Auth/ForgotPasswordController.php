@@ -41,7 +41,7 @@ class ForgotPasswordController extends Controller
 
        if ($users == null)
        {
-           return redirect()->back()->with(['error' => 'Email does not exist']);
+           return redirect()->back()->withErrors('Email does not exist.');
        }
 
         //create a new token to be sent to the user.
