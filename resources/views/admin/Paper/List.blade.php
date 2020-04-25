@@ -32,7 +32,7 @@
                             <td style="vertical-align: middle;">{!! $dt->last_name !!}</td>
                             <td style="vertical-align: middle;">{!! $dt->paper !!}</td>
                             <td style="text-align: center; vertical-align: middle;">
-                                <a href="{{route('sponsor.edit',$dt->id)}}" class="btn btn-primary btn-mini">Download</a>
+                                <a href="{{route('Download.paper',$dt->paper)}}" class="btn btn-primary btn-mini">Download</a>
                             </td>
                         </tr>
 

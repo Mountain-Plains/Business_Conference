@@ -20,7 +20,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $data['data']= DB::table('schedules')->get();
+        $data['data']= schedule::orderBy('EventDate', 'ASC')->get();
         return view('Schedule.index', $data);
     }
     public function list()
@@ -115,9 +115,9 @@ class ScheduleController extends Controller
 
     ]);
         $update_schedule->Day=$request->get('Day');
-        $update_schedule->EventDate=$request->get('EventDate');
-        $update_schedule->EventStartTime=$request->get('EventStartTime');
-        $update_schedule->EventEndTime=$request->get('EventEndTime');
+        $update_schedule->EventDate=Carbon::parse($request->get('EventDate'));
+        $update_schedule->EventStartTime=Carbon::parse($request->get('EventStartTime'));
+        $update_schedule->EventEndTime=Carbon::parse($request->get('EventEndTime'));
         $update_schedule->description=$request->get('description');
         $update_schedule->save();
         return redirect()->action('ScheduleController@list')->with('message','Update schedule Successfully!');

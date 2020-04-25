@@ -1,0 +1,45 @@
+@extends('layout.adminlayout.admin_design')
+@section('title','Edit Schedule')
+@section('content')
+    <div id="content">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+                        <h5>Create Ticket</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <form class="form-horizontal" action="{{ route('Ticket.create.post') }}" method="post" name="basic_validate" id="basic_validate" novalidate="novalidate">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <div class="control-group{{$errors->has('URL')?' has-error':''}}">
+                                <label class="control-label">URL :</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control-file" name="URL" id="Location" aria-describedby="fileHelp", placeholder="URL of the Ticket">
+                                    <span class="text-danger" style="color: red;"></span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="control-label"></label>
+                                <div class="controls">
+                                    <input type="submit" value="Create" class="btn btn-success">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('jsblock')
+    <script src="{{asset('JS/backend_js/jquery.min.js')}}"></script>
+    <script src="{{asset('JS/backend_js/jquery.ui.custom.js')}}"></script>
+    <script src="{{asset('JS/backend_js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('JS/backend_js/jquery.uniform.js')}}"></script>
+    <script src="{{asset('JS/backend_js/select2.min.js')}}"></script>
+    <script src="{{asset('JS/backend_js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('JS/backend_js/matrix.js')}}"></script>
+    <script src="{{asset('JS/backend_js/matrix.tables.js')}}"></script>
+    <script src="{{asset('JS/backend_js/matrix.popover.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+@endsection

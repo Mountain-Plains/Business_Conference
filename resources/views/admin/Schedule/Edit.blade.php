@@ -9,7 +9,7 @@
                         <h5>Edit Schedule</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form class="form-horizontal" action="{{url('/schedule-edit/update',$schedule->id) }}" method="post" name="basic_validate" id="basic_validate" novalidate="novalidate">
+                        <form class="form-horizontal" action="{{url('/admin/schedule-edit/update',$schedule->id) }}" method="post" name="basic_validate" id="basic_validate" novalidate="novalidate">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             {{method_field("PUT")}}
                             <div class="control-group{{$errors->has('Day')?' has-error':''}}">
