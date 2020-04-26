@@ -15,18 +15,14 @@
 Route::get('login', 'AdminController@index');
 Route::post('adminpanel', 'AdminController@loginCheck');
 
-Route::get('/', 'HomeController@index');
-Route::get("/front", function () {
-    return view('front');
-});
-Route::get('/index', 'IndexController@index');
+Route::get('/', 'IndexController@index');
 
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
 
-Route::get('schedule', 'ScheduleController@index')->name('Schedule.index');
-Route::get('/Ticket', 'TicketController@index');
-Route::get('/Sponsor', 'SponsorController@index');
+//Route::get('schedule', 'ScheduleController@index')->name('Schedule.index');
+//Route::get('/Ticket', 'TicketController@index');
+//Route::get('/Sponsor', 'SponsorController@index');
 
 Route::get('/forgot_password', 'Auth\ForgotPasswordController@forgot');
 Route::post('/forgot_password', 'Auth\ForgotPasswordController@password');
