@@ -14,9 +14,9 @@
                 <li><a href="/file-upload" style="color:{{$template->headerTextColor}};">Paper Submission</a></li>
                 <li><a href="/Ticket" style="color:{{$template->headerTextColor}};">Ticket</a></li>
                 <li><a href="/Sponsor" style="color:{{$template->headerTextColor}};">Sponsor</a></li>
-                @if (Auth::check())
-                    <li><a href="/dashboard" style="color:{{$template->headerTextColor}};">Admin</a></li>
-                @endif
+                {{--                @if (Auth::check())--}}
+                <li><a href="/dashboard" style="color:{{$template->headerTextColor}};">Admin</a></li>
+                {{--                @endif--}}
             </ul>
         </nav><!-- .nav-menu -->
     </div>
