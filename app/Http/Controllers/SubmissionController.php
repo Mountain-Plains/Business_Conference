@@ -21,6 +21,7 @@ class SubmissionController extends Controller
     public function fileUploadPost(Request $request)
     {
         $request->validate([
+            'title'=>'required',
             'firstName'=>'required',
             'lastName'=>'required',
             'isReviewed'=>'required',
