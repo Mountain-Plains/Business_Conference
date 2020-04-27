@@ -7,19 +7,18 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
-<<<<<<< HEAD
+
 
 use Illuminate\Support\Facades\DB;
 
-=======
-use Illuminate\Support\Facades\DB;
->>>>>>> amar
+
+
 class DownloadController extends Controller
 {
     public function download($file)
     {
 #	return response()->download('public/Papers/'.$file);
-	return Storage::download('public/Papers/'.$file);
+	return Storage::download('public/Paper/'.$file);
     }
 
     public function  list(){

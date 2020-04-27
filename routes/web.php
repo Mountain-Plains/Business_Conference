@@ -56,7 +56,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::put('/sponsor-edit/update/{id}', 'SponsorController@update');
     Route::get('/admin/Paper/List', 'DownloadController@list');
 
-    Route::get('/papers/{file}', 'DownloadController@download');
+    Route::get('/papers/{file}', 'DownloadController@download')->name('Download.paper');
 
     Route::get('home-create', 'HomeController@create')->name('home.create');
     Route::post('home-create', 'HomeController@store')->name('home.create.post');
