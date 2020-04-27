@@ -25,7 +25,7 @@
                                 <div class="controls">
                                     <input type="file" class="form-control-file" name="Image" id="Image" aria-describedby="fileHelp" value="{{$sponsor->Image}}"></p>
                                     <small id="fileHelp" class="form-text text-muted">Please upload a valid file.</small>
-                                    <span class="text-danger" style="color: red;"></span>
+                                    <span class="text-danger" style="color: #1cffbc;"></span>
                                 </div>
                             </div>
                             <div class="control-group">

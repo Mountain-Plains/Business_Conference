@@ -47,7 +47,7 @@ class SponsorController extends Controller
     {
         $request->validate([
             'Name'=>'required',
-            'Image' => 'required|image|mimes:png,jpg,jpeg|max:1000',
+            'Image' => 'required|image|mimes:png,jpg,jpeg|max:10000',
         ]);
       $Sponsor= new Sponsor();
       $Sponsor->Name= $request['Name'];
@@ -100,7 +100,7 @@ class SponsorController extends Controller
         $update_Image= Sponsor::find($id);
         $request->validate([
             'Name'=>'required',
-            'Image' => 'required|image|mimes:png,jpg,jpeg|max:1000',
+            'Image' => 'required|image|mimes:png,jpg,jpeg|max:10000',
         ]);
         $update_Image->Name=$request->get('Name');
         if($request->hasFile('Image')){

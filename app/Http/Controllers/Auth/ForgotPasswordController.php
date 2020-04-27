@@ -41,7 +41,7 @@ class ForgotPasswordController extends Controller
 
        if ($users == null)
        {
-           return redirect()->back()->with(['error' => 'Email does not exist']);
+           return redirect()->back()->withErrors('Email does not exist.');
        }
 
         //create a new token to be sent to the user.
@@ -68,7 +68,7 @@ class ForgotPasswordController extends Controller
             ['user' => $user,'token'=>$token],
             function($message) use ($user){
                 $message -> to ($user -> email);
-                $message -> subject($user->first_name.", reset your password,");
+                $message -> subject($user->first_name.", reset your passw   ord,");
             }
         );
     }

@@ -21,13 +21,23 @@
         <div class="control-group">
             <div class="controls">
                 <div class="main_input_box">
+                    <span class="add-on bg_ls"><i class="icon-lock"> </i></span>
+                    {{Form::email('email',$email)}}
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <div class="main_input_box">
                     <span class="add-on bg_lg"><i class="icon-lock"> </i></span>
                     {!! Form::password('password', ['class' => '','placeholder'=>'New Password Here']) !!}
                 </div>
             </div>
         </div>
+
         {{Form::hidden('token',$token)}}
-        {{Form::hidden('email',$email)}}
+
         <div class="control-group">
             <div class="controls">
                 <div class="main_input_box">

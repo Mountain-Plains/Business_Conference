@@ -14,16 +14,11 @@
         @endif
 
         {{Form::open (array ('action' => 'Auth\ForgotPasswordController@password'))}}
-        {{ Form::hidden('email', $users->first()->email) }}
 
         <div class="controls">
             <div class="main_input_box">
                 <span class="add-on bg_lo"><i class="icon-envelope"></i></span>
-                @foreach($users as $u)
-                    <tr>
-                        <td>{{$u->email}}</td>
-                    </tr>
-                @endforeach
+                <input type="email" name="email"/>
             </div>
         </div>
 
