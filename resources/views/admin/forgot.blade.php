@@ -14,7 +14,7 @@
         @endif
 
         {{Form::open (array ('action' => 'Auth\ForgotPasswordController@password'))}}
-
+        {{--{!! Form::open(['url' => '/reset_password_without_token']) !!}--}}
         <div class="controls">
             <div class="main_input_box">
                 <span class="add-on bg_lo"><i class="icon-envelope"></i></span>

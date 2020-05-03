@@ -8,7 +8,7 @@ Use \DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use function foo\func;
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 //use Reminder;
 use App\User;
 use Carbon\Carbon;
