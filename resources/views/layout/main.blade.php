@@ -22,7 +22,7 @@
 </head>
 
 <body style="background-color:{{$template->backColor}}; color:{{$template->primaryTextColor}};">
-@include('layout.nav')
+{{--@include('layout.nav')--}}
 </br>
 @yield('content')
 

@@ -27,7 +27,7 @@ class SubmissionController extends Controller
             'lastName'=>'required',
             'isReviewed'=>'required',
             'paper' => 'required|mimes:doc,pdf,docx,zip|max:2048',
-            'g-recaptcha-response' => ['required', new GoogleRecaptcha]
+//            'g-recaptcha-response' => ['required', new GoogleRecaptcha]
         ]);
 
         $Submission= new Submission;
@@ -45,7 +45,7 @@ class SubmissionController extends Controller
         $newsubmission= array("title"=>$Submission->title, "first_name"=>$Submission->first_name, "last_name"=> $Submission->last_name,"isReviewed"=>$Submission->isReviewed, "paper"=>$fileName);
         $created= DB::table('submissions')->insert($newsubmission);
         if($created){
-            return redirect()->action('SubmissionController@fileUpload')->with('message','Paper Submitted Successfully!');
+            return redirect()->action('IndexController@index')->with('success','Paper Submitted Successfully!');
         }else{
             return "Not Sucessful";
         }

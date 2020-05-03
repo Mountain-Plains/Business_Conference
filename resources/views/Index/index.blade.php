@@ -5,11 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Mountain Plains</title>
 
-        
+
 
         <!-- Bootstrap -->
 	<link href="{{ asset('css/frontend_css/bootstrap.min.css') }}" rel="stylesheet">
-        
+
         <!-- Main Style -->
 	<link href="{{ asset('css/frontend_css/index_main.css') }}" rel="stylesheet">
 
@@ -30,7 +30,7 @@
         <!-- jQuery Load -->
         <script src="{{ asset('JS/frontend_js/jquery-min.js') }}"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        
+
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -102,7 +102,7 @@
 <!-- Sponsor Section End -->
 
 
-    
+
 <!-- paper Section -->
     <section id="papers">
     <h1 class="title">Submit a Paper</h1>
@@ -115,7 +115,7 @@
     <div id="copyright">
     <div class="container">
     <div class="col-md-10"><p>Design & Developed by <a href="http://graygrids.com">GrayGrids</a></p></div>
-    
+
     </div>
 <!-- Copyright Section End-->
 
@@ -129,7 +129,7 @@
         <script src="assets/js/lightbox.min.js"></script>
 	<script src="{{ asset('JS/frontend_js/lightbox.min.js') }}"></script>
 
-        <!-- All JS plugin Triggers 
+        <!-- All JS plugin Triggers
         <script src="assets/js/main.js"></script>-->
 
 

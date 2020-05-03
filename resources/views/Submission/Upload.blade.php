@@ -3,7 +3,7 @@
     Paper submission for review
 @endsection
 @section('content')
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     @if(session()->has('message'))
         <div class="alert alert-success">
             {{ session()->get('message') }}
@@ -62,7 +62,7 @@
                                 <small id="fileHelp" class="form-text text-muted">Please upload a valid file.</small>
                             </div>
 
-                          <p>  <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div></p>
+{{--                            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>--}}
 
                             <button type="submit" class="btn btn-primary">Submit</button>
 
