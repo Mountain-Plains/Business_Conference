@@ -17,6 +17,7 @@ Route::post('adminpanel', 'AdminController@loginCheck');
 
 Route::get('/', 'IndexController@index');
 
+
 Route::get('file-upload', 'SubmissionController@fileUpload')->name('file.upload');
 Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.upload.post');
 
@@ -29,6 +30,8 @@ Route::post('/forgot_password', 'Auth\ForgotPasswordController@password');
 
 Route::get('/passwords/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 Route::post('passwords/reset', 'Auth\ResetPasswordController@reset');
+Route::get('/passwords/reset/', 'Auth\ForgotPasswordController@ShowLinkRequestForm');
+
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     //template
@@ -52,7 +55,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::put('/sponsor-edit/update/{id}', 'SponsorController@update');
     Route::get('/admin/Paper/List', 'DownloadController@list');
 
-    Route::get('/papers/{file}', 'DownloadController@download');
+    Route::get('/papers/{file}', 'DownloadController@download')->name('Download.paper');
 
     Route::get('home-create', 'HomeController@create')->name('home.create');
     Route::post('home-create', 'HomeController@store')->name('home.create.post');
@@ -77,3 +80,5 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     //Log out
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');;
 });
+
+Auth::routes();

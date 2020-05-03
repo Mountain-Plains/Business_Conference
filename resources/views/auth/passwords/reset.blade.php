@@ -3,56 +3,65 @@
     Reset Password
 @endsection
 @section('content')
-    <div id="loginbox">
-        {{--@include('include.navbar')--}}
-        <br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Reset Password') }}</div>
 
-        @if($errors->any())
-            @foreach($errors->all() as $message)
-                <h5 class="alert alert-danger">{{$message}}</h5>
-            @endforeach
-        @endif
-        {{--        {{dd($token,$email)}}--}}
+                <div class="card-body">
+                    <form method="POST" action="{{ route('password.update') }}">
+                        @csrf
 
-        {{Form::open (array ('action' => 'Auth\ResetPasswordController@reset'))}}
-        {{csrf_field()}}
-        <h3>Reset Password</h3>
+                        <input type="hidden" name="token" value="{{ $token }}">
 
-        <div class="control-group">
-            <div class="controls">
-                <div class="main_input_box">
-                    <span class="add-on bg_ls"><i class="icon-lock"> </i></span>
-                    {{Form::email('email',$email)}}
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Reset Password') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-        <div class="control-group">
-            <div class="controls">
-                <div class="main_input_box">
-                    <span class="add-on bg_lg"><i class="icon-lock"> </i></span>
-                    {!! Form::password('password', ['class' => '','placeholder'=>'New Password Here']) !!}
-                </div>
-            </div>
-        </div>
-
-        {{Form::hidden('token',$token)}}
-
-        <div class="control-group">
-            <div class="controls">
-                <div class="main_input_box">
-                    <span class="add-on bg_ly"><i class="icon-lock"></i></span>
-                    {!! Form::password('password_confirmation', ['class' => '','placeholder'=>'Confirm Password Here']) !!}
-                </div>
-            </div>
-        </div>
-        <div class="form-actions">
-                    <span class="">
-                {!! Form::submit('Reset Password', ['class' => 'btn btn-info']) !!}
-        </span>
-        </div>
-        {!! Form::close() !!}
-
-
     </div>
+</div>
 @endsection
