@@ -32,7 +32,7 @@ class ForgotPasswordController extends Controller
     public function forgot()
     {
         $users = DB::table('users')->get();
-        return view('admin.forgot',['users' => $users]);
+        return view('auth.passwords.email',['users' => $users]);
     }
 
     public  function  password(Request $request)

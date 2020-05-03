@@ -33,6 +33,7 @@ Route::post('passwords/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/passwords/reset/', 'Auth\ForgotPasswordController@ShowLinkRequestForm');
 
 
+
 Route::group(['middleware' => ['auth', 'admin']], function () {
     //template
     Route::resources(['template' => 'TemplateController',]);
