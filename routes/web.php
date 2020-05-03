@@ -28,10 +28,10 @@ Route::post('file-upload', 'SubmissionController@fileUploadPost')->name('file.up
 Route::get('/forgot_password', 'Auth\ForgotPasswordController@forgot');
 Route::post('/forgot_password', 'Auth\ForgotPasswordController@password');
 
-Route::get('/passwords/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-Route::post('passwords/reset', 'Auth\ResetPasswordController@reset');
+Route::get('/passwords/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('passwords/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 Route::get('/passwords/reset/', 'Auth\ForgotPasswordController@ShowLinkRequestForm');
-
+Route::post('password/email','Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -82,4 +82,4 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');;
 });
 
-Auth::routes();
+//Auth::routes();
