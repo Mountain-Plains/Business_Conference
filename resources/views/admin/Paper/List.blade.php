@@ -33,7 +33,10 @@
                             <td style="vertical-align: middle;">{!! $dt->paper !!}</td>
                             <td style="text-align: center; vertical-align: middle;">
                                 <a href="{{action('DownloadController@download',$dt->paper)}}" class="btn btn-primary btn-mini">Download</a>
+                                <a href="/paper/deleteItem/{{$dt->id}}" class="btn btn-danger btn-mini deleteRecord">Delete</a>
+
                             </td>
+
                         </tr>
 
                     @endforeach

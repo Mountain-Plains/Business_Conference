@@ -69,7 +69,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('sponsor-create', 'SponsorController@create')->name('Sponsor.create');
     Route::post('sponsor-upload', 'SponsorController@store')->name('Sponsor.create.post');
     Route::get('/sponsor/deleteItem/{id}', 'SponsorController@destroy');
-
+    Route::get('/paper/deleteItem/{id}', 'DownloadController@destroy');
     //update user
     Route::get('/admin/Profile/Users', 'AdminController@getProfile');
     Route::get('/admin/Profile/addNewUser', 'AdminController@addUser');

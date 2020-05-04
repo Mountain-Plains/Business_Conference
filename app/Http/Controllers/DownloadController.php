@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
+use App\Submission;
 
 
 use Illuminate\Support\Facades\DB;
@@ -26,5 +27,12 @@ class DownloadController extends Controller
         $data['data']= DB::table('submissions')->get();
 
         return view('admin.Paper.List', $data);
+    }
+
+    public function destroy($id)
+    {
+        $delete= Submission::findorFail($id);
+        $delete->delete();
+        return redirect()->action('DownloadController@list')->with('message','Deleted Paper Successfully!');
     }
 }
