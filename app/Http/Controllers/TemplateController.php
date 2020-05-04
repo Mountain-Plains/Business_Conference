@@ -105,6 +105,6 @@ class TemplateController extends Controller
 
         $msg = "\"".$template->name."\" template applied.";
 
-        return redirect()->action('HomeController@index')->withErrors($msg);
+        return redirect()->action('IndexController@index')->withErrors($msg);
     }
 }

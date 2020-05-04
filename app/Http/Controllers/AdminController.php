@@ -76,7 +76,7 @@ class AdminController extends Controller
             $user->email = $request['email'];
             $user->password = $request['password'];
             $user->save();
-            return redirect()->action('AdminController@getProfile')->withErrors('Template Saved Successfully');
+            return redirect()->action('AdminController@getProfile')->withErrors('User Saved Successfully');
         } catch (BadQueryStringException $exception) {
             return redirect()->withErrors($exception);
         }

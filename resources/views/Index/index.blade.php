@@ -38,10 +38,10 @@
 
       </head>
 
-    <body data-spy="scroll" data-offset="20" data-target="#navbar">
+    <body data-spy="scroll" data-offset="20" data-target="#navbar" style="background-color:{{$template->backColor}}; color:{{$template->primaryTextColor}};">
     <!-- Nav Menu Section -->
     <div class="logo-menu">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="50">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="50" style="background-color:{{$template->headerColor}};">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header col-md-3">
@@ -51,16 +51,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#home">Mountain Plains</a>
+          <a class="navbar-brand" href="#home" style="color:{{$template->headerTextColor}};">Mountain Plains</a>
         </div>
 
-        <div class="collapse navbar-collapse" id="navbar">
+        <div class="collapse navbar-collapse" id="navbar" style="background-color:{{$template->headerColor}};">
                             <ul class="nav navbar-nav col-md-7 pull-right">
-                            <li class="active"><a href="#hero-area"> Home</a></li>
-                            <li><a href="#schedule"> Schedule</a></li>
-                            <li><a href="#portfolio"> Tickets</a></li>
-                            <li><a href="#sponsors"> Sponsors</a></li>
-                            <li><a href="#papers"> Papers</a></li>
+                            <li class="active"><a href="#hero-area" style="color:{{$template->headerTextColor}};"> Home</a></li>
+                            <li><a href="#schedule" style="color:{{$template->headerTextColor}};"> Schedule</a></li>
+                            <li><a href="#portfolio" style="color:{{$template->headerTextColor}};"> Tickets</a></li>
+                            <li><a href="#sponsors" style="color:{{$template->headerTextColor}};"> Sponsors</a></li>
+                            <li><a href="#papers" style="color:{{$template->headerTextColor}};"> Papers</a></li>
                             </ul>
         </div>
       </div>
