@@ -8,7 +8,7 @@
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
-
+        <li class=""><a title="" href="{{action('IndexController@index')}}"><i class="icon icon-home"></i> <span class="text">Home Page</span></a>
         <li class=""><a title="" href="{{route('logout')}}"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a>
         </li>
     </ul>
