@@ -38,5 +38,6 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layout.nav',function ($view){
             $view->with('template',Template::orderByRaw('ifnull(applied_at,created_at) desc')->first());
         });
+
     }
 }

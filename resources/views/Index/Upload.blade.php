@@ -55,7 +55,7 @@
                             </div>
 
 
-                            <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}">
+                            <div class="g-recaptcha" data-sitekey="6LcS9vIUAAAAAM9Sq43tVX_AzW2rr8HsOt480uNC">
                                 @if($errors->has('g-recaptcha-response'))
                                     <span class="invalid-feedback" style="display: block">
                                     <strong>{{$errors->first('g-recaptcha-response')}}</strong>
@@ -64,7 +64,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
-
+                <script src="https://www.google.com/recaptcha/api.js"></script>
                     <!--</div>
                 </div>-->
 		</div>

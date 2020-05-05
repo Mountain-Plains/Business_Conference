@@ -10,7 +10,7 @@ use Illuminate\Http\Redirect;
 use Illuminate\Http\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-use App\Rules\GoogleRecaptcha;
+use App\Rules\Captcha;
 class SubmissionController extends Controller
 {
     public function fileUpload()
@@ -27,7 +27,7 @@ class SubmissionController extends Controller
             'lastName'=>'required',
             'isReviewed'=>'required',
             'paper' => 'required|mimes:doc,pdf,docx,zip|max:2048',
-//            'g-recaptcha-response' => ['required', new GoogleRecaptcha]
+            'g-recaptcha-response' => ['required', new Captcha()],
         ]);
 
         $Submission= new Submission;
